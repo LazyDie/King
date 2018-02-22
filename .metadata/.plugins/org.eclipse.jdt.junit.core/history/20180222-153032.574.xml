@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestPageHelper" project="shopping-manager-web" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.king.controller.TestPageHelper" time="3.177">
+    <testcase name="testPageHelper" classname="com.king.controller.TestPageHelper" time="3.177"/>
+  </testsuite>
+</testrun>
