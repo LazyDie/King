@@ -19,7 +19,7 @@ public class TestPageHelper {
 		//创建一个Spring 容器
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 		//从spring容器中获得Mapper的代理容器
-		
+		 
 		TbItemMapper mapper = applicationContext.getBean(TbItemMapper.class);
 		//执行查询，并分页
 		TbItemExample example = new TbItemExample();

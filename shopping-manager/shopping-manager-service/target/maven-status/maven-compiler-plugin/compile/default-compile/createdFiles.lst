@@ -1,2 +1,4 @@
+com\king\service\ItemCatService.class
+com\king\service\impl\ItemCatServiceImpl.class
 com\king\service\ItemServiceImpl.class
 com\king\service\ItemService.class

@@ -1,2 +1,4 @@
+com\king\controller\ItemCatController.class
+com\king\controller\FileController.class
 com\king\controller\PageController.class
 com\king\controller\ItemController.class

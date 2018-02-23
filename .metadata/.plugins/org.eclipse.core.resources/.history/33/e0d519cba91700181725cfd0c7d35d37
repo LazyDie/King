@@ -1,0 +1,5 @@
+package com.king.service.impl;
+
+public class ItemCatServiceImpl {
+
+}

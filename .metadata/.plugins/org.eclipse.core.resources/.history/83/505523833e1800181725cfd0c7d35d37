@@ -1,0 +1,7 @@
+package com.king.controller;
+
+@Controller  
+@RequestMapping("/file")  
+public class FileController {
+
+}
