@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileController {
 	@RequestMapping("/tiaozhuan")
 	public String tiaozhuan(){
-		return "tupian";
+		return "tshouye";
 	}
 	
 	@RequestMapping("/test")  

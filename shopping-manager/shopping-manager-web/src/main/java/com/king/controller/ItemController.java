@@ -32,7 +32,14 @@ public class ItemController {
 		EUDataGridResult result = itemService.getItemList(page, rows);
 		return result;
 	}
-	
+	/**
+	 * 添加商品
+	 * @param item 商品的各项属性
+	 * @param desc 商品描述
+	 * @param itemParams 
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/item/save", method=RequestMethod.POST)
 	private ShoppingResult createItem(TbItem item, String desc, String itemParams) throws Exception {
 		ShoppingResult result = itemService.createItem(item, desc, itemParams);
