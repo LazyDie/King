@@ -1,4 +1,6 @@
-com\king\service\ItemCatService.class
-com\king\service\impl\ItemCatServiceImpl.class
-com\king\service\ItemServiceImpl.class
-com\king\service\ItemService.class
+com\king\service\CommodityService.class
+com\king\service\impl\UserServiceImpl.class
+com\king\service\SupplierService.class
+com\king\service\impl\SupplierServiceImpl.class
+com\king\service\impl\CommodityServiceImpl.class
+com\king\service\UserService.class

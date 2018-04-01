@@ -1,11 +1,3 @@
-com\king\mapper\TbItemParamMapper.class
-com\king\mapper\TbOrderShippingMapper.class
-com\king\mapper\TbUserMapper.class
-com\king\mapper\TbItemParamItemMapper.class
-com\king\mapper\TbOrderItemMapper.class
-com\king\mapper\TbItemCatMapper.class
-com\king\mapper\TbContentCategoryMapper.class
-com\king\mapper\TbItemDescMapper.class
-com\king\mapper\TbContentMapper.class
-com\king\mapper\TbItemMapper.class
-com\king\mapper\TbOrderMapper.class
+com\king\mapper\UserMapper.class
+com\king\mapper\SupplierMapper.class
+com\king\mapper\CommodityMapper.class

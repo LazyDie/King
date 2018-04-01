@@ -8,9 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.king.mapper.TbItemMapper;
-import com.king.pojo.TbItem;
-import com.king.pojo.TbItemExample;
+
 
 public class TestPageHelper {
 
@@ -20,7 +18,7 @@ public class TestPageHelper {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 		//从spring容器中获得Mapper的代理容器
 		 
-		TbItemMapper mapper = applicationContext.getBean(TbItemMapper.class);
+	/*	TbItemMapper mapper = applicationContext.getBean(TbItemMapper.class);
 		//执行查询，并分页
 		TbItemExample example = new TbItemExample();
 		PageHelper.startPage(1, 10);
@@ -31,6 +29,6 @@ public class TestPageHelper {
 		//取分页信息
 		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
 		long total = pageInfo.getTotal();
-		System.out.println(total);
+		System.out.println(total);*/
 	}
 }

@@ -16,8 +16,13 @@
 	</bean>
 	<!-- 资源映射 -->
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/dist/" mapping="/dist/**"/>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
-	
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
+	<mvc:resources location="/WEB-INF/bootstarp/" mapping="/bootstrap/**"/>
+	<mvc:resources location="/WEB-INF/jquery/" mapping="/jquery/**"/>
+	<mvc:resources location="/WEB-INF/layui/" mapping="/layui/**"/>
+	<mvc:resources location="/WEB-INF/font-awesome/" mapping="/font-awesome/**"/>
 	<!-- 定义文件上传解析器 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
