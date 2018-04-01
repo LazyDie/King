@@ -57,7 +57,7 @@
          	 <div class="input-group">
 		  		<span style="padding:6px 6px">供应商名称</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="name" placeholder="请输入供应商名称" class="layui-input"></input>
+					<input type="text" name="name" placeholder="请输入供应商名称" class="layui-input" id="supplier_name"></input>
 				</div>
 			</div>
 		  </div>
@@ -201,7 +201,7 @@
                     
                   </thead>
                   <tbody>
-                  		<c:forEach items="${resultList}" var="item">
+                  	<%-- 	<c:forEach items="${resultList}" var="item">
                        	<tr>
                        	    <th width="1%" param="{type:'checkbox'}">
                                 <input type="checkbox" lay-skin="primary" lay-filter="allChoose">
@@ -217,7 +217,7 @@
                        		<th>${item.type}</th>
                        		<th>${item.mark}</th>
                        	</tr>
-                       </c:forEach>
+                       </c:forEach> --%>
                   </tbody>
                </table>
               <!-- 分页 -->
@@ -272,7 +272,7 @@ var Render = {
  }; */
  
  
- 
+ var totalRecord;
 /* ajax请求 */
  //页面加载完成后，直接去发送一个ajax请求，要到分页数据
     $(function () {
@@ -344,6 +344,8 @@ var Render = {
         $("#page_info").empty();
         $("#page_info").append(" 当前页码" + result.pageNum + ",总共" + result.pages +
             "页,总共" + result.total + "条记录")
+            totalRecord = result.total;
+            
     }
     //解析显示分页条
     function build_page_nav(result) {
@@ -405,11 +407,32 @@ var Render = {
             backdrop: "static"
         });
     });
+    
+    //校验
+    function validate_add_form(){
+    	//拿到要校验的数据，进行正则表达式校验
+    	var empName = $("#supplier_name").val();//获取输入框的值
+    	var regName = /(^[a-zA-Z0-9_-]{3,16}$)|(^[\u2E80-\u9FFF]{2,5})/; //3到6位英文或数字，或两位中文
+   		 /* var regName = /^[a-zA-Z0-9_-]{3,16}$/; */
+    	alert(empName);
+    	if(!regName.test(empName)){
+    		alert("校验失败");
+    		return false;
+    	}
+    	alert("校验成功");
+    	return true;
+    }
 
     
   //保存员工数据
     $("#supplier_save_bt").click(function () {
         //1.模态框中的数据
+        
+        //1.1  对输入框进行校验
+        if(!validate_add_form()){
+        	return false;
+        }
+        
         //2.发送ajax请求
 
         // alert($("#myModal form").serialize());
