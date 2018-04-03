@@ -29,6 +29,19 @@ public class SupplierServiceImpl implements SupplierService{
 		 return "success";
 	}
 
+	@Override
+	public Supplier selectById(Integer id) {
+		// TODO Auto-generated method stub
+		return supplierMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public int updateSupplier(Supplier supplier) {
+		// TODO Auto-generated method stub
+		return supplierMapper.updateByPrimaryKey(supplier);
+	}
+
+	
 	
 	
 }

@@ -32,14 +32,14 @@
 </head>
 <body>
 
-<!-- 模态框 -->
+<!-- 添加供应商模态框 -->
 <!-- Modal -->
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">添加运营商</h4>
+        <h4 class="modal-title" id="gridSystemModalLabel">添加供应商</h4>
       </div>
       <div class="modal-body">
       <form>
@@ -49,7 +49,7 @@
           	<div class="input-group">
 		  		<span style="padding:6px 6px">供应商编号</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="cId" placeholder="请输入供应商编号" class="layui-input"></input>
+					<input type="text" name="cId" placeholder="请输入供应商编号" class="layui-input" id="a_cId"></input>
 				</div>
 			</div>
 		  </div>
@@ -138,6 +138,112 @@
     </div>
 </div>
 
+
+<!-- 修改供应商模态框 -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="supplier_Up_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">修改供应商</h4>
+      </div>
+      <div class="modal-body">
+      <form>
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+         <div class="col-md-12" >
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+          	<div class="input-group">
+		  		<span style="padding:6px 6px">供应商编号</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="cId" placeholder="请输入供应商编号" class="layui-input" id="u_cId"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+         	 <div class="input-group">
+		  		<span style="padding:6px 6px">供应商名称</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="name" placeholder="请输入供应商名称" class="layui-input" id="u_name"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
+          	 <div class="input-group">
+          		<span style="padding:6px 6px">传真</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="fax" placeholder="请输入供应商传真" class="layui-input" id="u_fax"></input>
+				</div>
+			</div>	
+          </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+        <div class="col-md-12" >
+            <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+              <div class="input-group">
+		  		<span style="padding:6px 6px">联系人</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="contacter" placeholder="请输入联系人" class="layui-input" id="u_contacter"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+          	<div class="input-group">
+		  		<span style="padding:6px 6px">电话号码</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="phone" placeholder="请输入电话号码" class="layui-input" id="u_phone"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
+          	<div class="input-group">
+          		<span style="padding:6px 6px">手机号码</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="mobile" placeholder="请输入手机号码" class="layui-input" id="u_mobile"></input>
+				</div>
+			</div>
+          </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+        <div class="col-md-12">
+          <div class="col-md-12" style="padding:0;">
+          		<div class="input-group">
+          			<span style="padding:6px 6px">供应商地址</span>
+          			<div class="layui-input-inline">
+						<input type="text" name="address" placeholder="请输入供应商地址" class="layui-input" id="u_address"></input>
+					</div>
+          		</div>
+          </div>
+          </div>
+        </div>
+        
+         <div class="row" style="margin-top: 20px;overflow:hidden;">
+         <div class="col-md-12">
+          <div class="col-md-12" style="padding:0;">
+          		<table>
+          			<tr>
+          			 	<td>
+          					<span style="padding:6px 6px">供应商备注</span>
+          				</td>
+          				<td>
+							<input type="text" name="mark" placeholder="请输入供应商备注" class="layui-input" id="u_mark"></input>
+						</td>
+					</tr>
+				</table>
+          </div>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="supplier_up_bt">更新</button>
+      </div>
+    </div><!-- /.modal-content -->
+    </div>
+</div>
 <!-- 表格主体 -->
 
 <form class="layui-form" action="supplierSelectAll" method="get">
@@ -152,7 +258,8 @@
 		</div>
 		<div class="layui-input-normal layui-layout-right">
 			<!-- <button class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal">新增</button> -->
-			<button type="button" class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal">新增</button>
+			<!-- <button type="button" class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal" id="supplier_add_bt">新增</button> -->
+			<button type="button" class="layui-btn layui-btn" id="supplier_add_bt">新增</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
 		
@@ -167,12 +274,14 @@
                   <thead>
                       <tr>
                             <!--复选框-->
-                            <th width="1%" param="{type:'checkbox'}">
+                            <!-- <th width="1%" param="{type:'checkbox'}">
                                 <input type="checkbox" lay-skin="primary" lay-filter="allChoose">
-                            </th>
+                            </th> -->
                            <!--isPrimary：是否是主键-->
-                            <th width="10%" param="{name:'paraId',isPrimary:'true',hide:'true'}">序号</th>
+                            <th width="5%" param="{name:'paraId',isPrimary:'true',hide:'true'}">序号</th>
 
+							<th width="5%" param="{name:'paraCode'}">供应商编号</th>
+							
                             <th width="10%" param="{name:'paraCode'}">供应商名称</th>
 
                             <th width="10%" param="{name:'paraName'}">传真</th>
@@ -303,6 +412,7 @@ var Render = {
         var emps = result.list;
         $.each(emps, function (index, item) {
             var empIdTd = $("<td></td>").append(item.id);
+            var supplier_id = $("<td></td>").append(item.cId);
             var empNameTd = $("<td></td>").append(item.name);
             var empGenderTd = $("<td></td>").append(item.fax)/* (item.gender == "M" ? "男" : "女"); */
             var empEmailTd = $("<td></td>").append(item.contacter);
@@ -315,17 +425,19 @@ var Render = {
              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
              编辑
              </button>*/
-            var editBtn = $("<button></button>").addClass("btn btn-primary btn-xs")
+            var editBtn = $("<button></button>").addClass("btn btn-primary btn-xs edit_bt")
                 .append($("<span></span>").addClass("glyphicon glyphicon-pencil")).append("编辑");
+             editBtn.attr("edit-id",item.id);
             /*button class="btn btn-danger btn-xs">
              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
              删除
              </button>*/
-            var deleteBtn = $("<button></button>").addClass("btn btn-danger btn-xs")
+            var deleteBtn = $("<button></button>").addClass("btn btn-danger btn-xs delete_bt")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(deleteBtn);
             /*append方法执行完成之后还是原来的元素*/
             $("<tr></tr>").append(empIdTd)
+            	.append(supplier_id)
                 .append(empNameTd)
                 .append(empGenderTd)
                 .append(empEmailTd)
@@ -399,13 +511,16 @@ var Render = {
     
     //点击新增按钮弹出模态框
     $("#supplier_add_bt").click(function () {
-
+    	//清空输入框中的数据
+    	 $(".layui-input").val("");
+  	
         //发送ajax请求，查出部门信息，显示在下拉列表
        
         //弹出模态框
         $("#myModal").modal({
             backdrop: "static"
         });
+       
     });
     
     //校验
@@ -450,6 +565,48 @@ var Render = {
             }
         });
     });
+  
+  //修改供应商信息
+  $(document).on("click",".edit_bt",function(){
+	 // alert("hello");
+	 //查出供应商信息
+	 getSupplier($(this).attr("edit-id"));
+	 //把供应商表中的id传递给更新按钮
+	 $("#supplier_up_bt").attr("edit-id",$(this).attr("edit-id"));
+	//弹出模态框
+      $("#supplier_Up_Modal").modal({
+          backdrop: "static"
+      });
+  });
+  //查出供应商信息
+  function getSupplier(id){
+	  $.ajax({
+		  url:"${APP_PATH}/supplier/one/"+id,
+		  type:"GET",
+		  success:function(result){
+			  /* console.log(result); */
+			 /*  $("#u_cId").val(result.id); */
+			  $("#u_phone").val(result.phone);
+			  $("#u_name").val(result.name);
+			  $("#u_cId").val(result.cId);
+			  $("#u_contacter").val(result.contacter);
+			  $("#u_address").val(result.address);
+			  $("#u_fax").val(result.fax);
+			  $("#u_mark").val(result.mark);
+			  $("#u_mobile").val(result.mobile);
+		  }
+	  });
+  };
+  //点击更新按钮，更新供应商信息
+  $("#supplier_up_bt").click(function(){
+	  $.ajax({
+		  url:"${APP_PATH}/supplier/updat"+$(this).attr("edit-id"),
+		  type:"POST",
+		  success:function(result){
+			  
+		  }
+	  });
+  });
 </script>          
 </body>
 
