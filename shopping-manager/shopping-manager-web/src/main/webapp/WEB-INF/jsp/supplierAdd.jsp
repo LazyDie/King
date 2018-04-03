@@ -434,6 +434,8 @@ var Render = {
              </button>*/
             var deleteBtn = $("<button></button>").addClass("btn btn-danger btn-xs delete_bt")
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
+             deleteBtn.attr("delete-id",item.id);
+             deleteBtn.attr("delete-name",item.name);
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(deleteBtn);
             /*append方法执行完成之后还是原来的元素*/
             $("<tr></tr>").append(empIdTd)
@@ -600,12 +602,34 @@ var Render = {
   //点击更新按钮，更新供应商信息
   $("#supplier_up_bt").click(function(){
 	  $.ajax({
-		  url:"${APP_PATH}/supplier/updat"+$(this).attr("edit-id"),
+		  url:"${APP_PATH}/supplier/update/"+$(this).attr("edit-id"),
 		  type:"POST",
+		  data:$("#supplier_Up_Modal form").serialize(),
 		  success:function(result){
-			  
+			  alert(result);
+			  //1.关闭模态框
+              $("#supplier_Up_Modal").modal('hide');
+              //2.来到最后一页，显示数据
+              to_page(1);
 		  }
 	  });
+  });
+  //删除供应商信息
+  $(document).on("click",".delete_bt",function(){
+	  
+		var supplierId = $(this).attr("delete-id");
+	  	var supplierName = $(this).attr("delete-name");
+ 		if(confirm("确定删除【"+supplierName+"】吗？")){
+ 			$.ajax({
+ 	 			url:"${APP_PATH}/supplier/delete/"+supplierId,
+ 	 			type:"GET",
+ 	 			success :function(result){
+ 	 				alert(result);
+ 	 				to_page(1);
+ 	 			}
+ 	 		});	
+ 		}
+	  	
   });
 </script>          
 </body>

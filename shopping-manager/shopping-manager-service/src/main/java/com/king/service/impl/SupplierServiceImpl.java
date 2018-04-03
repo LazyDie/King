@@ -41,6 +41,12 @@ public class SupplierServiceImpl implements SupplierService{
 		return supplierMapper.updateByPrimaryKey(supplier);
 	}
 
+	@Override
+	public int deleteByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		return supplierMapper.deleteByPrimaryKey(id);
+	}
+
 	
 	
 	

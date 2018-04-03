@@ -23,4 +23,11 @@ public interface SupplierService {
 	 * 更新供应商信息
 	 */
 	int updateSupplier(Supplier supplier);
+	
+	/**
+	 * 删除供应商
+	 * @param id
+	 * @return
+	 */
+	int deleteByPrimaryKey(Integer id);
 }

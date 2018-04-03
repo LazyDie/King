@@ -73,10 +73,23 @@ public class SupplierController {
 	 */
 	
 	@ResponseBody
-	@RequestMapping(value="/supplier/update",method=RequestMethod.POST)
+	@RequestMapping(value="/supplier/update/{id}",method=RequestMethod.POST)
 	public String supplierUpdate(Supplier supplier){
 		int result = supplierService.updateSupplier(supplier);
 		System.out.println(result);
+		if(result!=0){
+			return "success";
+		}else {
+			return "false";
+		}
+	}
+	/**
+	 * 删除供应商
+	 */
+	@ResponseBody
+	@RequestMapping(value="/supplier/delete/{id}",method=RequestMethod.GET)
+	public String supplierDelete(@PathVariable("id") int id){
+		int result = supplierService.deleteByPrimaryKey(id);
 		if(result!=0){
 			return "success";
 		}else {
