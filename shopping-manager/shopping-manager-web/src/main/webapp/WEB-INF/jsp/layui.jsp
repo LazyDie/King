@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/animate.min.css">
 <!-- jquery -->
-<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> -->
+<script src="jquery/jquery.min.js"></script>
 <!-- 三个重要文件之一 -->
 <script src="layui/layui.js"></script>
 <script src="js/main.js"></script>

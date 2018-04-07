@@ -114,7 +114,7 @@
 		 <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="fa fa-info fa-fw"></i>&nbsp;货品管理</a>
            <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="addCommodity"><i></i>&nbsp;货品列表</a></dd>
+		       <dd><a href="javascript:;" data-url="goods"><i></i>&nbsp;货品列表</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;货品类别</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;货品单位</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;报损原因</a></dd>
