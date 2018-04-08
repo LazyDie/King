@@ -59,7 +59,7 @@
          	 <div class="input-group">
 		  		<span style="padding:6px 6px">货品名称</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="name" placeholder="请输入货品名称" class="layui-input"></input>
+					<input type="text" name="name" placeholder="请输入货品名称" class="layui-input" id="goods_name"></input>
 				</div>
 			</div>
 		  </div>
@@ -128,12 +128,32 @@
         </div> 
          
         <div class="row" style="margin-top:20px;overflow:hidden;">
-			<input type="file" id="file" upload-file uploadconfig="ProductPicConfig" class="ng-isolate-scope"  name="file"/>   
-			<button type="button" class="layui-btn" id="shangchuan">
-			  <i class="layui-icon">&#xe67c;</i>上传图片
-			</button>     
-			<img id="showUploadImg"  width="80" height="50" style="display: none;" />
-			<input type="hidden" id="newsImgUrl" name="path" value="">
+        <div class="col-md-12">
+          <div class="col-md-12" style="padding:0;">
+          		<div class="input-group">
+          			<span style="padding:6px 6px">货品图片</span>
+          			<div class="layui-input-inline">
+						<button type="button" class="layui-btn" name="file" id="shangchuan1">
+						  <i class="layui-icon">&#xe67c;</i>上传图片
+						</button>     
+					
+						<input type="hidden" id="newsImgUrl" name="path" value="" class="layui-input">
+					</div>
+          		</div>
+          </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:20px;overflow:hidden;">
+        <div class="col-md-12">
+          <div class="col-md-12" style="padding:0;">
+          		<div class="input-group">
+          			<span style="padding:6px 6px"></span>
+          			<div class="layui-input-inline">
+						<img id="showUploadImg"  width="100" height="100" style="display: none;" />
+					</div>
+          		</div>
+          </div>
+          </div>
         </div>
         
         
@@ -141,7 +161,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary" id="supplier_save_bt">保存</button>
-        <input type="submit" value="上传"/>
       </div>
       </form>
     </div><!-- /.modal-content -->
@@ -150,22 +169,23 @@
 
 <!-- 修改货品模态框 -->
 <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="supplier_Up_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bs-example-modal-lg" id="goods_up_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridSystemModalLabel">修改货品</h4>
       </div>
+       <form id="goodsAdd">
       <div class="modal-body">
-      <form>
+     
         <div class="row" style="margin-top: 20px;overflow:hidden;">
          <div class="col-md-12" >
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
           	<div class="input-group">
 		  		<span style="padding:6px 6px">货品编号</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="cId" placeholder="请输入货品编号" class="layui-input" id="u_cId"></input>
+					<input type="text" name="gid" placeholder="请输入货品编号" class="layui-input" id="g_id"></input>
 				</div>
 			</div>
 		  </div>
@@ -173,15 +193,15 @@
          	 <div class="input-group">
 		  		<span style="padding:6px 6px">货品名称</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="name" placeholder="请输入货品名称" class="layui-input" id="u_name"></input>
+					<input type="text" name="name" placeholder="请输入货品名称" class="layui-input" id="g_name"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
           	 <div class="input-group">
-          		<span style="padding:6px 6px">传真</span>
+          		<span style="padding:6px 6px">条形码</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="fax" placeholder="请输入货品传真" class="layui-input" id="u_fax"></input>
+					<input type="text" name="barcode" placeholder="请输入货品条形码" class="layui-input" id="g_barcode"></input>
 				</div>
 			</div>	
           </div>
@@ -191,25 +211,25 @@
         <div class="col-md-12" >
             <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
               <div class="input-group">
-		  		<span style="padding:6px 6px">联系人</span>
+		  		<span style="padding:6px 6px">类别</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="contacter" placeholder="请输入联系人" class="layui-input" id="u_contacter"></input>
+					<input type="text" name="cateId" placeholder="请输入类别" class="layui-input" id="g_cateId"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
           	<div class="input-group">
-		  		<span style="padding:6px 6px">电话号码</span>
+		  		<span style="padding:6px 6px">采购价</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="phone" placeholder="请输入电话号码" class="layui-input" id="u_phone"></input>
+					<input type="text" name="cpirce" placeholder="请输入采购价" class="layui-input" id="g_cprice"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
           	<div class="input-group">
-          		<span style="padding:6px 6px">手机号码</span>
+          		<span style="padding:6px 6px">批发价</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="mobile" placeholder="请输入手机号码" class="layui-input" id="u_mobile"></input>
+					<input type="text" name="ppirce" placeholder="请输入批发价" class="layui-input" id="g_pprice"></input>
 				</div>
 			</div>
           </div>
@@ -219,40 +239,47 @@
         <div class="col-md-12">
           <div class="col-md-12" style="padding:0;">
           		<div class="input-group">
-          			<span style="padding:6px 6px">货品地址</span>
+          			<span style="padding:6px 6px">零售价</span>
           			<div class="layui-input-inline">
-						<input type="text" name="address" placeholder="请输入货品地址" class="layui-input" id="u_address"></input>
+						<input type="text" name="rprice" placeholder="请输入零售价" class="layui-input" id="g_rpirce"></input>
 					</div>
           		</div>
           </div>
           </div>
         </div>
-        
-         <div class="row" style="margin-top: 20px;overflow:hidden;">
-         <div class="col-md-12">
+       
+       <div class="row" style="margin-top: 20px;overflow:hidden;">
+        <div class="col-md-12">
           <div class="col-md-12" style="padding:0;">
-          		<table>
-          			<tr>
-          			 	<td>
-          					<span style="padding:6px 6px">货品备注</span>
-          				</td>
-          				<td>
-							<input type="text" name="mark" placeholder="请输入货品备注" class="layui-input" id="u_mark"></input>
-						</td>
-					</tr>
-				</table>
+          		<div class="input-group">
+          			<span style="padding:6px 6px">库存</span>
+          			<div class="layui-input-inline">
+						<input type="text" name="number" placeholder="请输入库存" class="layui-input" id="g_number"></input>
+					</div>
+          		</div>
           </div>
           </div>
+        </div> 
+         
+        <div class="row" style="margin-top:20px;overflow:hidden;">
+			<button type="button" class="layui-btn" name="file" id="shangchuan1">
+			  <i class="layui-icon">&#xe67c;</i>上传图片
+			</button>     
+			<img id="showUploadImg1"  width="100" height="100" style="display: none;" />
+			<input type="hidden" id="newsImgUrl1" name="path" value="" class="layui-input">
         </div>
-        </form>
+        
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary" id="supplier_up_bt">更新</button>
+        <button type="button" class="btn btn-primary" id="supplier_save_bt">保存</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
     </div>
 </div>
+
 <!-- 表格主体 -->
 
 <form class="layui-form" action="supplierSelectAll" method="get">
@@ -309,34 +336,12 @@
                             <th width="10%" param="{name:'sortNo'}">当前库存</th>
                             
                             <th width="10%" param="{name:'sortNo'}">操作</th>
-                            
-                         <!--     render：渲染列
-                            <th width="10%" param="{name:'state',codeName:'state',render:'Render.customState'}">手机</th>
-                             sortBtn：排序操作列
-                            <th width="4%" param="{name:'sortNo',sortBtn:'true'}">创建时间</th>
-                             buttons：操作列
-                            <th width="10%" param="{operate:'true',buttons:'Render.state,Render.edit,Render.delete'}">操作</th> -->
+                     
                        </tr>
                     
                   </thead>
                   <tbody>
-                  	<%-- 	<c:forEach items="${resultList}" var="item">
-                       	<tr>
-                       	    <th width="1%" param="{type:'checkbox'}">
-                                <input type="checkbox" lay-skin="primary" lay-filter="allChoose">
-                            </th>
-                       		<th>${item.id}</th>
-                       		<th>${item.name}</th>
-                       		<th>序号</th>
-                       		<th>${item.contacter}</th>
-                       		<th>${item.phone}</th>
-                       		<th>${item.mobile}</th>
-                       		<th>${item.address}</th>
-                       		<th>${item.fax}</th>
-                       		<th>${item.type}</th>
-                       		<th>${item.mark}</th>
-                       	</tr>
-                       </c:forEach> --%>
+            
                   </tbody>
                </table>
               <!-- 分页 -->
@@ -357,9 +362,11 @@
         
   <script>
 //Demo
-layui.use(['form','laypage'], function(){
+layui.use(['form','laypage','upload'], function(){
   var form = layui.form;
   var laypage = layui.laypage;
+  var upload = layui.upload;
+  
   //执行一个laypage实例
   laypage.render({
     elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
@@ -371,6 +378,27 @@ layui.use(['form','laypage'], function(){
     layer.msg(JSON.stringify(data.field));
     return false;
   });
+//执行实例
+//图片上传
+  var uploadInst = upload.render({
+    elem: '#shangchuan1', //绑定元素
+ 	url: '/goods/picture', //上传接口
+ 	type: "POST",
+   	async:false,
+   	cache:false,
+   	processData:false,
+    contentType: false,
+    done: function(result){
+    	 var path = result.entend.path
+         $("#newsImgUrl").val(path);
+         $("#showUploadImg").css("display","block");
+         $("#showUploadImg").attr("src","../images/"+path).attr("width",100).attr("height",100);
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+  
 });
 /* 
 //数据渲染对象
@@ -525,7 +553,10 @@ var Render = {
     $("#supplier_add_bt").click(function () {
     	//清空输入框中的数据
     	 $(".layui-input").val("");
-  	
+    	//隐藏图片
+    	 $("#showUploadImg").css("display","none");
+    	//清空内容
+    	$("#newsImgUrl").val();
         //发送ajax请求，查出部门信息，显示在下拉列表
        
         //弹出模态框
@@ -538,7 +569,7 @@ var Render = {
     //校验
     function validate_add_form(){
     	//拿到要校验的数据，进行正则表达式校验
-    	var empName = $("#supplier_name").val();//获取输入框的值
+    	var empName = $("#goods_name").val();//获取输入框的值
     	var regName = /(^[a-zA-Z0-9_-]{3,16}$)|(^[\u2E80-\u9FFF]{2,5})/; //3到6位英文或数字，或两位中文
    		 /* var regName = /^[a-zA-Z0-9_-]{3,16}$/; */
     	alert(empName);
@@ -549,29 +580,6 @@ var Render = {
     	alert("校验成功");
     	return true;
     }
-
-    //上传图片
-    $("#shangchuan").click(function () {
-        //2.发送ajax请求
-		var formData = new FormData($("#goodsAdd")[0]);
-        formData.append("file",$("#file")[0]);
-        $.ajax({
-            url: "${APP_PATH}/goods/picture",
-            type: "POST",
-           	data:formData,
-           	async:false,
-           	cache:false,
-           	processData:false,
-            contentType: false,
-            success: function (result) {
-            	
-                 var path = result.entend.path
-                 $("#newsImgUrl").val(path);
-                 $("#showUploadImg").css("display","block");
-                 $("#showUploadImg").attr("src","../images/"+path).attr("width",50).attr("height",50);
-            }
-        });
-    });
   //保存货品数据
     $("#supplier_save_bt").click(function () {
         //1.模态框中的数据
@@ -580,7 +588,6 @@ var Render = {
         if(!validate_add_form()){
         	return false;
         }
-        alert($("#myModal form").serialize());
         //2.发送ajax请求
         $.ajax({
             url: "${APP_PATH}/goods/add",
@@ -604,26 +611,28 @@ var Render = {
 	 //把货品表中的id传递给更新按钮
 	 $("#supplier_up_bt").attr("edit-id",$(this).attr("edit-id"));
 	//弹出模态框
-      $("#supplier_Up_Modal").modal({
+      $("#goods_up_model").modal({
           backdrop: "static"
       });
   });
   //查出货品信息
   function getSupplier(id){
 	  $.ajax({
-		  url:"${APP_PATH}/supplier/one/"+id,
+		  url:"${APP_PATH}/goods/one/"+id,
 		  type:"GET",
 		  success:function(result){
-			  /* console.log(result); */
-			 /*  $("#u_cId").val(result.id); */
-			  $("#u_phone").val(result.phone);
-			  $("#u_name").val(result.name);
-			  $("#u_cId").val(result.cId);
-			  $("#u_contacter").val(result.contacter);
-			  $("#u_address").val(result.address);
-			  $("#u_fax").val(result.fax);
-			  $("#u_mark").val(result.mark);
-			  $("#u_mobile").val(result.mobile);
+			  $("#g_id").val(result.entend.entend.gid);
+			  $("#g_name").val(result.entend.entend.name);
+			  $("#g_barcode").val(result.entend.entend.barcode);
+			  $("#g_cateId").val(result.entend.entend.cateId);
+			  $("#g_cprice").val(result.entend.entend.cpirce);
+			  $("#g_pprice").val(result.entend.entend.ppirce);
+			  $("#g_rpirce").val(result.entend.entend.rprice);
+			  $("#g_number").val(result.entend.entend.number);
+			 	 var path = result.entend.entend.path;
+		         $("#newsImgUrl1").val(path);
+		         $("#showUploadImg1").css("display","block");
+		         $("#showUploadImg1").attr("src","../images/"+path).attr("width",100).attr("height",100);
 		  }
 	  });
   };

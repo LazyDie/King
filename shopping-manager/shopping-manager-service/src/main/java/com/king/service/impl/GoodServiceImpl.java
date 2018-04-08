@@ -25,6 +25,12 @@ public class GoodServiceImpl implements GoodService{
 		return goodsMapper.selectAll();
 	}
 
+	@Override
+	public Goods selectById(Integer id) {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectByPrimaryKey(id);
+	}
+
 
 	
 	

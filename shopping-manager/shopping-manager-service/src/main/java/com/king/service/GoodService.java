@@ -14,4 +14,8 @@ public interface GoodService {
 	 * 查询所有商品
 	 */
 	List<Goods> selectAll();
+	/**
+	 * 根据id查询
+	 */
+	Goods selectById(Integer id);
 }

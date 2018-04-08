@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,10 +39,12 @@ public class GoodController {
 	 */
 	@RequestMapping(value="/goods/add",method=RequestMethod.POST)
 	public Msg addGoods(Goods goods){
-				int result = goodService.addGoods(goods);
-				if(result != 0)
-					return Msg.success();
-				return Msg.fail();
+		if(goods.getPath()==null||goods.getPath()=="")
+			goods.setPath("NoImage.png");
+		int result = goodService.addGoods(goods);
+		if(result != 0)
+			return Msg.success();
+		return Msg.fail();
 	}
 /*	@RequestMapping(value="/goods/add",method=RequestMethod.POST)
 	public Msg addGoods(Goods goods,MultipartFile file,HttpServletRequest request) throws IOException{
@@ -88,5 +91,16 @@ public class GoodController {
 		PageInfo<Goods> page = new PageInfo<>(results,5);
 		return Msg.success().add("pageInfo", page);
 	}
-	
+	/**
+	 * 根据id查询记录
+	 */
+	@RequestMapping(value="/goods/one/{id}",method=RequestMethod.GET)
+	public Msg selectOne(@PathVariable("id") Integer id){
+		Goods result = goodService.selectById(id);
+		if(result!=null)
+			return Msg.success().add("entend", result);
+		else {
+			return Msg.fail();
+		}
+	}
 }
