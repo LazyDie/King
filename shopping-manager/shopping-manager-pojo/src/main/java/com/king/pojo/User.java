@@ -11,19 +11,11 @@ public class User {
 
     private String name;
 
-    private String sendaddress;
-
-    private String receiveaddress;
-
     private String phone;
 
     private String sex;
 
     private Integer age;
-
-    private Date birthday;
-
-    private Double money;
 
     private Integer status;
 
@@ -63,22 +55,6 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getSendaddress() {
-        return sendaddress;
-    }
-
-    public void setSendaddress(String sendaddress) {
-        this.sendaddress = sendaddress == null ? null : sendaddress.trim();
-    }
-
-    public String getReceiveaddress() {
-        return receiveaddress;
-    }
-
-    public void setReceiveaddress(String receiveaddress) {
-        this.receiveaddress = receiveaddress == null ? null : receiveaddress.trim();
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -101,22 +77,6 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public Double getMoney() {
-        return money;
-    }
-
-    public void setMoney(Double money) {
-        this.money = money;
     }
 
     public Integer getStatus() {

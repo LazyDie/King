@@ -1,0 +1,78 @@
+package com.king.controller;
+
+import java.awt.image.BufferedImage;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.king.common.pojo.Msg;
+import com.king.common.utils.ShiroUtils;
+import com.king.common.utils.VerifyCode;
+import com.king.pojo.User;
+import com.king.service.UserService;
+
+@Controller
+public class AdminController {
+
+	@Autowired
+	private UserService userService;
+	/**
+	 * 验证码
+	 * 
+	 * @param req
+	 * @param resp
+	 * @throws Exception
+	 */
+	@RequestMapping("/sys/vcode")
+	public void vcode(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		VerifyCode vc = new VerifyCode();
+		BufferedImage image = vc.getImage();// 获取一次性验证码图片
+		// 该方法必须在getImage()方法之后来调用
+		System.out.println("验证码图片上的文本:"+vc.getText());//获取图片上的文本
+		// 把文本保存到session中，为验证做准备
+		HttpSession session = req.getSession(); 
+		session.setAttribute("vcode", vc.getText());
+		//保存到shiro session
+		//自己把SessionID保存在cookie中  
+	    Cookie cookie=new Cookie("JSESSIONID", session.getId());  
+	    //设置cookie保存时间  
+	    cookie.setMaxAge(60*20);  
+	    //被创建的cookie返回浏览器  
+	    resp.addCookie(cookie);  
+		//ShiroUtils.setSessionAttribute("kaptcha", vc.getText());
+		VerifyCode.output(image, resp.getOutputStream());// 把图片写到指定流中
+	}
+	/**
+	 * 登陆验证
+	 */
+	@RequestMapping(value="/sys/login",method=RequestMethod.POST)
+	@ResponseBody
+	public Msg login(HttpServletRequest req, String username, String password, String vcode) {
+		/*if(StringUtils.isEmpty(vcode)||StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
+			throw new RRException("参数不能为空");
+		}*/
+		
+		String kaptcha = (String) req.getSession().getAttribute("vcode");
+		kaptcha = kaptcha.toLowerCase();
+		if(!vcode.toLowerCase().equals(kaptcha)){
+			return Msg.fail().add("key", "验证码错误");
+		}
+		User user = new User();
+		user.setUsername(username);
+		user.setPwd(password);
+		if(userService.selectByNameAndPwd(user)==0)
+			return Msg.fail().add("key", "用户名或密码不存在");
+		return Msg.success();
+	
+
+	}
+}

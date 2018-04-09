@@ -22,13 +22,14 @@ public class UserServiceImpl implements UserService{
 		userMapper.insert(user);
 	}
 	/**
-	 * 查询用户名是否存在
+	 * 查询用户名和密码相同的用户是否存在
 	 */
+
+
 	@Override
-	public String selectByUserName(String userName) {
+	public int selectByNameAndPwd(User user) {
 		// TODO Auto-generated method stub
-		String pwdString = userMapper.selectByUserName(userName);
-		return pwdString;
+		return userMapper.selectByNameAndPwd(user);
 	}
 
 	
