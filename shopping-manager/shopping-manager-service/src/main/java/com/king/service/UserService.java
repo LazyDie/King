@@ -8,5 +8,11 @@ public interface UserService {
 	void register(User user);
 
 	//根据用户名和密码查数据
-	int selectByNameAndPwd(User user);
+	User selectByNameAndPwd(User user);
+	
+	//根据用户名查找用户信息
+	User selectByname(String username);
+	
+	//根据id查询用户信息
+	User selectById(Integer id);
 }

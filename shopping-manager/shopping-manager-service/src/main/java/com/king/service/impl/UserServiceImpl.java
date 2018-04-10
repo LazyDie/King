@@ -27,10 +27,23 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public int selectByNameAndPwd(User user) {
+	public User selectByNameAndPwd(User user) {
 		// TODO Auto-generated method stub
 		return userMapper.selectByNameAndPwd(user);
 	}
+	//根据用户名查询用户信息
+	@Override
+	public User selectByname(String username) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByName(username);
+	}
+	@Override
+	public User selectById(Integer id) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByPrimaryKey(id);
+	}
+	
+	
 
 	
 	

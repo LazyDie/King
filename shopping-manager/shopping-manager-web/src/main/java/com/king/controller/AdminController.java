@@ -13,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.king.common.pojo.Msg;
+import com.king.common.utils.CommonUtil;
 import com.king.common.utils.ShiroUtils;
 import com.king.common.utils.VerifyCode;
 import com.king.pojo.User;
@@ -69,10 +71,45 @@ public class AdminController {
 		User user = new User();
 		user.setUsername(username);
 		user.setPwd(password);
-		if(userService.selectByNameAndPwd(user)==0)
+		user = userService.selectByNameAndPwd(user);
+		if(CommonUtil.isEmpty(user))
 			return Msg.fail().add("key", "用户名或密码不存在");
-		return Msg.success();
-	
-
+		else{
+			
+			//user = userService.selectByname(username);
+			System.out.println(user.getName());
+			System.out.println(user.getPath());
+			System.out.println(user.getId());
+			HttpSession session = req.getSession();
+			session.setAttribute("id", user.getId());
+			if(!CommonUtil.isEmpty(user.getName())){
+				session.setAttribute("name", user.getName());
+			}else {
+				session.setAttribute("name", "匿名用户");
+			}
+			if(!CommonUtil.isEmpty(user.getPath())){
+				session.setAttribute("path", user.getPath());
+			}else{
+				session.setAttribute("path", "NoImage.png");
+			}
+			return Msg.success();
+		}
+	}
+	@RequestMapping(value="/basicInfo/shuaxin",method=RequestMethod.GET)
+	public ModelAndView basicRefresh(HttpServletRequest req){
+		System.out.println("刷新成功");
+		int id = (int) req.getSession().getAttribute("id");
+		System.out.println(id);
+		User user = userService.selectById(id);
+		System.out.println(user.getName());
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("basicInfo1");
+		mv.addObject("user",user);
+		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/basicInfo/zhongzhuan",method=RequestMethod.GET)
+	public String zhongZhuan(){
+		return "success";
 	}
 }

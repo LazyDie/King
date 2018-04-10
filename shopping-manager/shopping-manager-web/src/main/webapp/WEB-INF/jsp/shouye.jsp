@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>天天批发市场</title>
 <%@ include file="layui.jsp"%>
+ <link rel="shortcut icon" href="../images/tubiao.ico" type="image/x-icon" />
 <style>
 .menubar{
     position:absolute!important;
@@ -36,12 +37,12 @@
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="javascript:;" data-url="main">首页</a></li>
 
-	<li class="layui-nav-item">
+	<!-- <li class="layui-nav-item">
 		<input type="text" style="width: 300px;" id="chaxun" width="100" name="title" required lay-verify="required" placeholder="查询栏" autocomplete="off" class="layui-input">   
 	</li>
 	<li class="layui-nav-item">
 		<button class="layui-btn" style="width: 60px;">查询</button>
-	</li>
+	</li> -->
 	</ul>
     
 
@@ -49,23 +50,23 @@
       <li class="layui-nav-item"><a href="javascript:void(0)" class="xtgg"><i class="fa fa-volume-up"></i>&nbsp;系统公告</a></li>
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="images/3.jpg" class="layui-nav-img">
-           小金
+          <img src="../images/${sessionScope.path}" class="layui-nav-img">
+           ${sessionScope.name}
         </a>
         <dl class="layui-nav-child" id="hello">
           <dd><a href="javascript:;" data-url="basicInfo">基本资料</a></dd>
           <dd><a href="javascript:;" data-url="addCommodity">商品添加</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退出</a></li>
+      <li class="layui-nav-item"><a href="login">退出</a></li>
     </ul>
   </div>
   <div class="layui-side layui-bg-black">
 
     <div class="layui-side-scroll">
       <div class="user-photo">
-        <a class="img" title="我的头像"><img style="width: 80px;height: 80px" class="layui-circle" src="images/3.jpg"></a>
-        <p>你好！<span class="userName">${activeUser}</span></p>
+        <a class="img" title="我的头像"><img style="width: 80px;height: 80px" class="layui-circle" src="../images/${sessionScope.path}"></a>
+        <p>你好！<span class="userName">${sessionScope.name}</span></p>
       </div>
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test" id="ulmenu">
