@@ -95,6 +95,7 @@ public class AdminController {
 			return Msg.success();
 		}
 	}
+	//====================================基本资料====================================
 	@RequestMapping(value="/basicInfo/shuaxin",method=RequestMethod.GET)
 	public ModelAndView basicRefresh(HttpServletRequest req){
 		System.out.println("刷新成功");
@@ -112,4 +113,14 @@ public class AdminController {
 	public String zhongZhuan(){
 		return "success";
 	}
+	@RequestMapping(value="/basicInfo/basicInfoEdit",method=RequestMethod.POST)
+	public ModelAndView zhongZhuan1(HttpServletRequest req){
+		int id = (int) req.getSession().getAttribute("id");
+		User user = userService.selectById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("basicInfoEdit");
+		mv.addObject("user",user);
+		return mv;
+	}
+	
 }

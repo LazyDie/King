@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="layui-body">
-<form class="layui-form" action="basicInfoEdit" method="post">
+<form class="layui-form" action="zhuce" method="post" enctype="multipart/form-data">
   
    <div class="row" style="margin-top: 20px;overflow:hidden;">
          <div class="col-md-12" >
@@ -31,34 +31,34 @@
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">用户名</label>
 			    <div class="layui-input-inline">
-			      <input type="text" name="username" required  lay-verify="required" autocomplete="off" class="layui-input" readonly="readonly" value=${user.username }>
+			      <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value=${user.username}>
 			    </div>
 			  </div>
 			  
 			   <div class="layui-form-item">
 			    <label class="layui-form-label">姓名</label>
 			    <div class="layui-input-inline">
-			      <input type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input"  readonly="readonly" value=${user.name }>
+			      <input type="text" name="name" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" value=${user.name}>
 			    </div>
 			  </div>
 			  
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">年龄</label>
 			    <div class="layui-input-inline">
-			      <input type="text" name="age" required  lay-verify="required"  autocomplete="off" class="layui-input" readonly="readonly" value=${user.age }>
+			      <input type="text" name="age" required  lay-verify="required" placeholder="请输入年龄" autocomplete="off" class="layui-input" value=${user.age}>
 			    </div>
 			  </div>
 			   <div class="layui-form-item">
 			    <label class="layui-form-label">手机号码</label>
 			    <div class="layui-input-inline">
-			      <input type="text" name="birthday" required  lay-verify="required"  autocomplete="off" class="layui-input" readonly="readonly" value=${user.phone}>
+			      <input type="text" name="birthday" required  lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input" value=${user.phone}>
 			    </div>
 			  </div>
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">性别</label>
 			    <div class="layui-input-inline">
-			      <input type="radio" name="sex" value="男" title="男" disabled="disabled">
-			      <input type="radio" name="sex" value="女" title="女" checked disabled="disabled">
+			      <input type="radio" name="sex" value="男" title="男">
+			      <input type="radio" name="sex" value="女" title="女" checked>
 			    </div>
 			  </div>
   		</div>
@@ -72,9 +72,8 @@
   </div>
   <div class="layui-form-item">
     <div class="layui-input-block">
-     <!--  <button  class="layui-btn" onclick="window.location.href('basicInfoEdit.jsp')" >编辑</button>
-      --> 
-      <button  class="layui-btn" type="submit">编辑</button>
+      <button type="submit" class="layui-btn" >修改</button>
+      <button class="layui-btn layui-btn-primary" id="fanhui" onclick="javascript:history.back(-1);">返回</button>
     </div>
   </div>
 
@@ -91,10 +90,20 @@ layui.use('form', function(){
     return false;
   });
 });
-
+$("#").click(function () {
+	//清空输入框中的数据
+	 $(".layui-input").val("");
+	
+    //发送ajax请求，查出部门信息，显示在下拉列表
+   
+    //弹出模态框
+    $("#myModal").modal({
+        backdrop: "static"
+    });
+   
+});
 
 </script>
-</div> 
 
 </body>
 </html>

@@ -347,9 +347,10 @@
         
   <script>
 //Demo
-layui.use(['form','laypage'], function(){
+layui.use(['form','laypage','layer'], function(){
   var form = layui.form;
   var laypage = layui.laypage;
+  var layer = parent.layer === undefined ? layui.layer : parent.layer;
   //执行一个laypage实例
   laypage.render({
     elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
@@ -382,6 +383,7 @@ var Render = {
  
  
  var totalRecord;
+ var currentPage;
 /* ajax请求 */
  //页面加载完成后，直接去发送一个ajax请求，要到分页数据
     $(function () {
@@ -459,6 +461,7 @@ var Render = {
         $("#page_info").append(" 当前页码" + result.pageNum + ",总共" + result.pages +
             "页,总共" + result.total + "条记录")
             totalRecord = result.total;
+        	currentPage = result.pages;
             
     }
     //解析显示分页条
@@ -546,9 +549,9 @@ var Render = {
         //1.模态框中的数据
         
         //1.1  对输入框进行校验
-        if(!validate_add_form()){
+       /*  if(!validate_add_form()){
         	return false;
-        }
+        } */
         
         //2.发送ajax请求
 
@@ -558,12 +561,21 @@ var Render = {
             type: "POST",
             data: $("#myModal form").serialize(),
             success: function (result) {
-              /*   alert(result.msg); */
-                //员工保存成功
                 //1.关闭模态框
                 $("#myModal").modal('hide');
                 //2.来到最后一页，显示数据
-                to_page(1);
+                if(totalRecord%5==0){
+                	 to_page(currentPage+1);
+                }else{
+                	 to_page(currentPage);
+                }
+               
+                layer.msg('保存成功', {
+	 				  icon: 1,
+	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+	 				}, function(){
+	 				  //do something
+	 				}); 
             }
         });
     });
@@ -611,6 +623,12 @@ var Render = {
               $("#supplier_Up_Modal").modal('hide');
               //2.来到最后一页，显示数据
               to_page(1);
+              layer.msg('更新成功', {
+	 				  icon: 1,
+	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+	 				}, function(){
+	 				  //do something
+	 				}); 
 		  }
 	  });
   });
@@ -626,6 +644,12 @@ var Render = {
  	 			success :function(result){
  	 				alert(result);
  	 				to_page(1);
+ 	 				layer.msg('删除成功', {
+ 	 				  icon: 1,
+ 	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+ 	 				}, function(){
+ 	 				  //do something
+ 	 				});  
  	 			}
  	 		});	
  		}

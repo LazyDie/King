@@ -55,7 +55,6 @@
         </a>
         <dl class="layui-nav-child" id="hello">
           <dd><a href="javascript:;" data-url="basicInfo">基本资料</a></dd>
-          <dd><a href="javascript:;" data-url="addCommodity">商品添加</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="login">退出</a></li>

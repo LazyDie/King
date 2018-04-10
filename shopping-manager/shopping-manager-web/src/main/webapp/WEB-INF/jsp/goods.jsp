@@ -400,26 +400,9 @@ layui.use(['form','laypage','upload'], function(){
   });
   
 });
-/* 
-//数据渲染对象
-var Render = {
-    customState: function (rowdata,renderData index, value) {
-       if(value == "启用"){
-           return '<span style="color:green">'+value+'</span>';
-       }
-       if(value == "禁用"){
-           return '<span style="color:red">'+value+'</span>';
-       }
-       return value;
-    },
-    edit:function(rowdata,renderData){
-        var btn=' <button  onclick="editOne(\''+"/commpara/edit"+'\',\''+rowdata.paraId+'\')" class="layui-btn layui-btn-mini">修改</button>';
-        return btn;
-    }
- }; */
- 
  
  var totalRecord;
+ var currentPage;
 /* ajax请求 */
  //页面加载完成后，直接去发送一个ajax请求，要到分页数据
     $(function () {
@@ -497,6 +480,7 @@ var Render = {
         $("#page_info").append(" 当前页码" + result.entend.pageInfo.pageNum + ",总共" + result.entend.pageInfo.pages +
             "页,总共" + result.entend.pageInfo.total + "条记录")
             totalRecord = result.entend.pageInfo.total;
+        	currentPage = result.entend.pageInfo.pages;
             
     }
     //解析显示分页条
@@ -510,7 +494,7 @@ var Render = {
             firstPageLi.addClass("disabled");
         } else {
             prePageLi.click(function () {
-                to_page(result.pageNum - 1);
+                to_page(result.entend.pageInfo.pageNum - 1);
             });
             firstPageLi.click(function () {
                 to_page(1);
@@ -523,10 +507,10 @@ var Render = {
             lastPageLi.addClass("disabled");
         } else {
             nextPageLi.click(function () {
-                to_page(result.pageNum + 1);
+                to_page(result.entend.pageInfo.pageNum + 1);
             });
             lastPageLi.click(function () {
-                to_page(result.pages);
+                to_page(result.entend.pageInfo.pages);
             });
         }
         //添加首页和前一页
@@ -585,9 +569,9 @@ var Render = {
         //1.模态框中的数据
         
         //1.1  对输入框进行校验
-        if(!validate_add_form()){
+     /*    if(!validate_add_form()){
         	return false;
-        }
+        } */
         //2.发送ajax请求
         $.ajax({
             url: "${APP_PATH}/goods/add",
@@ -598,7 +582,17 @@ var Render = {
                 //1.关闭模态框
                 $("#myModal").modal('hide');
                 //2.来到最后一页，显示数据
-                to_page(1);
+        		if(totalRecord%5==0){
+        			to_page(currentPage+1);
+        		}else{
+        			to_page(currentPage);
+        		}
+                layer.msg('保存成功', {
+	 				  icon: 1,
+	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+	 				}, function(){
+	 				  //do something
+	 				}); 
             }
         });
     });
