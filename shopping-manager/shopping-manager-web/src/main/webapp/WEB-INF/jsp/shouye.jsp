@@ -125,7 +125,7 @@
          <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="fa fa-user-o"></i>&nbsp;客户管理</a>
            <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="ceshi"><i></i>&nbsp;客户管理</a></dd>
+		       <dd><a href="javascript:;" data-url="consumer"><i></i>&nbsp;客户管理</a></dd>
 	            <dd><a href="javascript:;" data-url="tupian"><i></i>&nbsp;报价管理</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;会员设置</a></dd>
 		    </dl>
@@ -134,7 +134,6 @@
           <a href="javascript:;" data-url=""><i class="fa fa-handshake-o"></i>&nbsp;供应商管理</a>
            <dl class="layui-nav-child">
 		       <dd><a href="javascript:;" data-url="supplierAdd"><i></i>&nbsp;供应商管理</a></dd>
-		        <dd><a href="javascript:;" data-url="supplierAdd"><i></i>&nbsp;供应商管理1</a></dd>
 		    </dl>
         </li>
         

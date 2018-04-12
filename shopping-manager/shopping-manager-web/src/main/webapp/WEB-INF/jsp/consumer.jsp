@@ -4,8 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8">
+<title>客户页面</title>
 <%@ include file="layui.jsp"%>
  <%-- 拿到当前项目路径 以/开始不以/结束--%>
     <%
@@ -32,40 +32,46 @@
 </head>
 <body>
 
-<!-- 添加供应商模态框 -->
+<!-- 添加客户模态框 -->
 <!-- Modal -->
+
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">添加供应商</h4>
+        <h4 class="modal-title" id="gridSystemModalLabel">添加客户</h4>
       </div>
+       <form action="goods/add" method="post" id="goodsAdd">
       <div class="modal-body">
-      <form>
+     
         <div class="row" style="margin-top: 20px;overflow:hidden;">
          <div class="col-md-12" >
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
           	<div class="input-group">
-		  		<span style="padding:6px 6px">供应商编号</span>
+		  		<span style="padding:6px 6px">客户编号</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="cId" placeholder="请输入供应商编号" class="layui-input" id="a_cId"></input>
+					<input type="text" name="cid" placeholder="请输入客户编号" class="layui-input"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
          	 <div class="input-group">
-		  		<span style="padding:6px 6px">供应商名称</span>
+		  		<span style="padding:6px 6px">客户名称</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="name" placeholder="请输入供应商名称" class="layui-input" id="supplier_name"></input>
+					<input type="text" name="username" placeholder="请输入客户名称" class="layui-input" ></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
           	 <div class="input-group">
-          		<span style="padding:6px 6px">传真</span>
+          		<span style="padding:6px 6px">客户类型</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="fax" placeholder="请输入供应商传真" class="layui-input"></input>
+					<select class="form-control" name="type" id="dept_add_select" autocomplete="off">
+						<option value="" selected disabled>请选择客户类型</option>
+						 <option value="零售">零售</option>
+						 <option value="批发">批发</option>
+					</select>
 				</div>
 			</div>	
           </div>
@@ -77,102 +83,71 @@
               <div class="input-group">
 		  		<span style="padding:6px 6px">联系人</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="contacter" placeholder="请输入联系人" class="layui-input"></input>
+					<input type="text" name="name" placeholder="请输入联系人" class="layui-input"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
           	<div class="input-group">
-		  		<span style="padding:6px 6px">电话号码</span>
+		  		<span style="padding:6px 6px">手机</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="phone" placeholder="请输入电话号码" class="layui-input"></input>
+					<input type="text" name="phone" placeholder="请输入手机号" class="layui-input"></input>
 				</div>
 			</div>
 		  </div>
-          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
-          	<div class="input-group">
-          		<span style="padding:6px 6px">手机号码</span>
-		  		<div class="layui-input-inline">
-					<input type="text" name="mobile" placeholder="请输入手机号码" class="layui-input"></input>
-				</div>
-			</div>
-          </div>
+         
           </div>
         </div>
-        <div class="row" style="margin-top: 20px;overflow:hidden;">
-        <div class="col-md-12">
-          <div class="col-md-12" style="padding:0;">
-          		<div class="input-group">
-          			<span style="padding:6px 6px">供应商地址</span>
-          			<div class="layui-input-inline">
-						<input type="text" name="address" placeholder="请输入供应商地址" class="layui-input"></input>
-					</div>
-          		</div>
-          </div>
-          </div>
-        </div>
-        
-         <div class="row" style="margin-top: 20px;overflow:hidden;">
-         <div class="col-md-12">
-          <div class="col-md-12" style="padding:0;">
-          		<table>
-          			<tr>
-          			 	<td>
-          					<span style="padding:6px 6px">供应商备注</span>
-          				</td>
-          				<td>
-							<input type="text" name="mark" placeholder="请输入供应商备注" class="layui-input"></input>
-						</td>
-					</tr>
-				</table>
-          </div>
-          </div>
-        </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary" id="supplier_save_bt">保存</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
     </div>
 </div>
 
-
-<!-- 修改供应商模态框 -->
+<!-- 修改客户模态框 -->
 <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="supplier_Up_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+<div class="modal fade bs-example-modal-lg" id="goods_up_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
        <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">修改供应商</h4>
+        <h4 class="modal-title" id="gridSystemModalLabel">修改客户</h4>
       </div>
+       <form id="goodsAdd">
       <div class="modal-body">
-      <form>
+     
         <div class="row" style="margin-top: 20px;overflow:hidden;">
          <div class="col-md-12" >
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
           	<div class="input-group">
-		  		<span style="padding:6px 6px">供应商编号</span>
+		  		<span style="padding:6px 6px">客户编号</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="cId" placeholder="请输入供应商编号" class="layui-input" id="u_cId"></input>
+					<input type="text" name="cid" placeholder="请输入客户编号" class="layui-input" id="c_id"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
          	 <div class="input-group">
-		  		<span style="padding:6px 6px">供应商名称</span>
+		  		<span style="padding:6px 6px">客户名称</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="name" placeholder="请输入供应商名称" class="layui-input" id="u_name"></input>
+					<input type="text" name="username" placeholder="请输入客户名称" class="layui-input" id="c_username" ></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
           	 <div class="input-group">
-          		<span style="padding:6px 6px">传真</span>
+          		<span style="padding:6px 6px">客户类型</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="fax" placeholder="请输入供应商传真" class="layui-input" id="u_fax"></input>
+					<select class="form-control" name="type" id="c_type" autocomplete="off">
+						<option value="" selected disabled>请选择客户类型</option>
+						 <option value="零售">零售</option>
+						 <option value="批发">批发</option>
+					</select>
 				</div>
 			</div>	
           </div>
@@ -184,73 +159,38 @@
               <div class="input-group">
 		  		<span style="padding:6px 6px">联系人</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="contacter" placeholder="请输入联系人" class="layui-input" id="u_contacter"></input>
+					<input type="text" name="name" placeholder="请输入联系人" class="layui-input" id="c_name"></input>
 				</div>
 			</div>
 		  </div>
           <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
           	<div class="input-group">
-		  		<span style="padding:6px 6px">电话号码</span>
+		  		<span style="padding:6px 6px">手机</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="phone" placeholder="请输入电话号码" class="layui-input" id="u_phone"></input>
+					<input type="text" name="phone" placeholder="请输入手机号" class="layui-input" id="c_phone"></input>
 				</div>
 			</div>
 		  </div>
-          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
-          	<div class="input-group">
-          		<span style="padding:6px 6px">手机号码</span>
-		  		<div class="layui-input-inline">
-					<input type="text" name="mobile" placeholder="请输入手机号码" class="layui-input" id="u_mobile"></input>
-				</div>
-			</div>
-          </div>
+         
           </div>
         </div>
-        <div class="row" style="margin-top: 20px;overflow:hidden;">
-        <div class="col-md-12">
-          <div class="col-md-12" style="padding:0;">
-          		<div class="input-group">
-          			<span style="padding:6px 6px">供应商地址</span>
-          			<div class="layui-input-inline">
-						<input type="text" name="address" placeholder="请输入供应商地址" class="layui-input" id="u_address"></input>
-					</div>
-          		</div>
-          </div>
-          </div>
-        </div>
-        
-         <div class="row" style="margin-top: 20px;overflow:hidden;">
-         <div class="col-md-12">
-          <div class="col-md-12" style="padding:0;">
-          		<table>
-          			<tr>
-          			 	<td>
-          					<span style="padding:6px 6px">供应商备注</span>
-          				</td>
-          				<td>
-							<input type="text" name="mark" placeholder="请输入供应商备注" class="layui-input" id="u_mark"></input>
-						</td>
-					</tr>
-				</table>
-          </div>
-          </div>
-        </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary" id="supplier_up_bt">更新</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
     </div>
 </div>
+
 <!-- 表格主体 -->
 
 <form class="layui-form" action="supplierSelectAll" method="get">
 	<div class="layui-form-item">
-		<label class="layui-form-label">批发商搜索：</label>
+		<label class="layui-form-label">搜索客户</label>
 		<div class="layui-input-inline">
-			<input type="text" name="search" placeholder="请输入运营商id或名称" class="layui-input"></input>
+			<input type="text" name="search" placeholder="请输入客户名称或条码" class="layui-input"></input>
 		</div>
 		<div class="layui-input-normal">
 			<button class="layui-btn layui-btn">搜索</button>
@@ -259,7 +199,8 @@
 		<div class="layui-input-normal layui-layout-right">
 			<!-- <button class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal">新增</button> -->
 			<!-- <button type="button" class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal" id="supplier_add_bt">新增</button> -->
-			<button type="button" class="layui-btn layui-btn" id="supplier_add_bt">新增</button>
+			<button type="button" class="layui-btn layui-btn" id="supplier_add_bt">添加客户</button>
+			<!-- <button type="button" class="layui-btn layui-btn" >出货</button> -->
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
 		
@@ -278,55 +219,25 @@
                                 <input type="checkbox" lay-skin="primary" lay-filter="allChoose">
                             </th> -->
                            <!--isPrimary：是否是主键-->
-                            <th width="5%" param="{name:'paraId',isPrimary:'true',hide:'true'}">序号</th>
+                            <th width="10%" param="{name:'paraId',isPrimary:'true',hide:'true'}">客户编号</th>
 
-							<th width="5%" param="{name:'paraCode'}">供应商编号</th>
+							<th width="15%" param="{name:'paraCode'}">客户名称</th>
 							
-                            <th width="10%" param="{name:'paraCode'}">供应商名称</th>
+                            <th width="15%" param="{name:'paraCode'}">客户类型</th>
 
-                            <th width="10%" param="{name:'paraName'}">传真</th>
+                            <th width="15%" param="{name:'paraName'}">联系人</th>
 
-                            <th width="10%" param="{name:'paraKey'}">联系人</th>
+                            <th width="15%" param="{name:'paraKey'}">手机</th>
 
-                            <th width="10%" param="{name:'sortNo'}">电话</th>
+                            <th width="15%" param="{name:'sortNo'}">创建时间</th>
                             
-                            <th width="10%" param="{name:'paraKey'}">手机</th>
-
-                            <th width="10%" param="{name:'sortNo'}">创建时间</th>
-                            
-                             <th width="10%" param="{name:'paraKey'}">地址</th>
-
-                            <th width="10%" param="{name:'sortNo'}">备注</th>
-                            
-                            <th width="10%" param="{name:'sortNo'}">操作</th>
-                            
-                         <!--     render：渲染列
-                            <th width="10%" param="{name:'state',codeName:'state',render:'Render.customState'}">手机</th>
-                             sortBtn：排序操作列
-                            <th width="4%" param="{name:'sortNo',sortBtn:'true'}">创建时间</th>
-                             buttons：操作列
-                            <th width="10%" param="{operate:'true',buttons:'Render.state,Render.edit,Render.delete'}">操作</th> -->
+                            <th width="15%" param="{name:'sortNo'}">操作</th>
+                     
                        </tr>
                     
                   </thead>
                   <tbody>
-                  	<%-- 	<c:forEach items="${resultList}" var="item">
-                       	<tr>
-                       	    <th width="1%" param="{type:'checkbox'}">
-                                <input type="checkbox" lay-skin="primary" lay-filter="allChoose">
-                            </th>
-                       		<th>${item.id}</th>
-                       		<th>${item.name}</th>
-                       		<th>序号</th>
-                       		<th>${item.contacter}</th>
-                       		<th>${item.phone}</th>
-                       		<th>${item.mobile}</th>
-                       		<th>${item.address}</th>
-                       		<th>${item.fax}</th>
-                       		<th>${item.type}</th>
-                       		<th>${item.mark}</th>
-                       	</tr>
-                       </c:forEach> --%>
+            
                   </tbody>
                </table>
               <!-- 分页 -->
@@ -347,10 +258,11 @@
         
   <script>
 //Demo
-layui.use(['form','laypage','layer'], function(){
+layui.use(['form','laypage','upload'], function(){
   var form = layui.form;
   var laypage = layui.laypage;
-  var layer = parent.layer === undefined ? layui.layer : parent.layer;
+  var upload = layui.upload;
+  
   //执行一个laypage实例
   laypage.render({
     elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
@@ -362,25 +274,28 @@ layui.use(['form','laypage','layer'], function(){
     layer.msg(JSON.stringify(data.field));
     return false;
   });
-});
-/* 
-//数据渲染对象
-var Render = {
-    customState: function (rowdata,renderData index, value) {
-       if(value == "启用"){
-           return '<span style="color:green">'+value+'</span>';
-       }
-       if(value == "禁用"){
-           return '<span style="color:red">'+value+'</span>';
-       }
-       return value;
-    },
-    edit:function(rowdata,renderData){
-        var btn=' <button  onclick="editOne(\''+"/commpara/edit"+'\',\''+rowdata.paraId+'\')" class="layui-btn layui-btn-mini">修改</button>';
-        return btn;
+//执行实例
+//图片上传
+  var uploadInst = upload.render({
+    elem: '#shangchuan1', //绑定元素
+ 	url: '/goods/picture', //上传接口
+ 	type: "POST",
+   	async:false,
+   	cache:false,
+   	processData:false,
+    contentType: false,
+    done: function(result){
+    	 var path = result.entend.path
+         $("#newsImgUrl").val(path);
+         $("#showUploadImg").css("display","block");
+         $("#showUploadImg").attr("src","../images/"+path).attr("width",100).attr("height",100);
     }
- }; */
- 
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+  
+});
  
  var totalRecord;
  var currentPage;
@@ -392,7 +307,7 @@ var Render = {
     //根据页码显示页面
     function to_page(pn) {
         $.ajax({
-            url: "${APP_PATH}/pageHelper",
+            url: "${APP_PATH}/consumer/all",
             data: "pn=" + pn,
             type: "GET",
             success: function (result) {
@@ -411,18 +326,14 @@ var Render = {
     function build_emp_table(result) {
         //清空table
         $("#commparaTable tbody").empty();
-        var emps = result.list;
+        var emps = result.entend.pageInfo.list;
         $.each(emps, function (index, item) {
-            var empIdTd = $("<td></td>").append(item.id);
-            var supplier_id = $("<td></td>").append(item.cId);
-            var empNameTd = $("<td></td>").append(item.name);
-            var empGenderTd = $("<td></td>").append(item.fax)/* (item.gender == "M" ? "男" : "女"); */
-            var empEmailTd = $("<td></td>").append(item.contacter);
-            var detpNameTd = $("<td></td>").append(item.phone);
-            var suMobile = $("<td></td>").append(item.mobile);
-            var suCreateTime = $("<td></td>").append(item.createTime);
-            var suAddress = $("<td></td>").append(item.address);
-            var suMark = $("<td></td>").append(item.mark);
+            var empIdTd = $("<td></td>").append(item.cid);
+            var supplier_id = $("<td></td>").append(item.username);
+            var empNameTd = $("<td></td>").append(item.type);
+            var empGenderTd = $("<td></td>").append(item.name)
+            var empEmailTd = $("<td></td>").append(item.phone);
+            var detpNameTd = $("<td></td>").append(item.createtime);
             /*<button class="btn btn-primary btn-xs">
              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
              编辑
@@ -446,10 +357,6 @@ var Render = {
                 .append(empGenderTd)
                 .append(empEmailTd)
                 .append(detpNameTd)
-                .append(suMobile)
-                .append(suCreateTime)
-                .append(suAddress)
-                .append(suMark)
                 .append(btnTd)
                 .appendTo("#commparaTable tbody");
         });
@@ -458,10 +365,10 @@ var Render = {
     //解析显示分页信息
     function build_page_info(result) {
         $("#page_info").empty();
-        $("#page_info").append(" 当前页码" + result.pageNum + ",总共" + result.pages +
-            "页,总共" + result.total + "条记录")
-            totalRecord = result.total;
-        	currentPage = result.pages;
+        $("#page_info").append(" 当前页码" + result.entend.pageInfo.pageNum + ",总共" + result.entend.pageInfo.pages +
+            "页,总共" + result.entend.pageInfo.total + "条记录")
+            totalRecord = result.entend.pageInfo.total;
+        	currentPage = result.entend.pageInfo.pages;
             
     }
     //解析显示分页条
@@ -470,12 +377,12 @@ var Render = {
         var ul = $("<ul></ul>").addClass("pagination");
         var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
         var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;").attr("href", "#"));
-        if (result.hasPreviousPage == false) {
+        if (result.entend.pageInfo.hasPreviousPage == false) {
             prePageLi.addClass("disabled");
             firstPageLi.addClass("disabled");
         } else {
             prePageLi.click(function () {
-                to_page(result.pageNum - 1);
+                to_page(result.entend.pageInfo.pageNum - 1);
             });
             firstPageLi.click(function () {
                 to_page(1);
@@ -483,22 +390,22 @@ var Render = {
         }
         var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;").attr("href", "#"));
         var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
-        if (result.hasNextPage == false) {
+        if (result.entend.pageInfo.hasNextPage == false) {
             nextPageLi.addClass("disabled");
             lastPageLi.addClass("disabled");
         } else {
             nextPageLi.click(function () {
-                to_page(result.pageNum + 1);
+                to_page(result.entend.pageInfo.pageNum + 1);
             });
             lastPageLi.click(function () {
-                to_page(result.pages);
+                to_page(result.entend.pageInfo.pages);
             });
         }
         //添加首页和前一页
         ul.append(firstPageLi).append(prePageLi);
-        $.each(result.navigatepageNums, function (index, item) {
+        $.each(result.entend.pageInfo.navigatepageNums, function (index, item) {
             var numLi = $("<li></li>").append($("<a></a>").append(item).attr("href", "#"));
-            if (result.pageNum == item) {
+            if (result.entend.pageInfo.pageNum == item) {
                 numLi.addClass("active");
             }
             numLi.click(function () {
@@ -518,7 +425,10 @@ var Render = {
     $("#supplier_add_bt").click(function () {
     	//清空输入框中的数据
     	 $(".layui-input").val("");
-  	
+    	//隐藏图片
+    	 $("#showUploadImg").css("display","none");
+    	//清空内容
+    	$("#newsImgUrl").val();
         //发送ajax请求，查出部门信息，显示在下拉列表
        
         //弹出模态框
@@ -531,7 +441,7 @@ var Render = {
     //校验
     function validate_add_form(){
     	//拿到要校验的数据，进行正则表达式校验
-    	var empName = $("#supplier_name").val();//获取输入框的值
+    	var empName = $("#goods_name").val();//获取输入框的值
     	var regName = /(^[a-zA-Z0-9_-]{3,16}$)|(^[\u2E80-\u9FFF]{2,5})/; //3到6位英文或数字，或两位中文
    		 /* var regName = /^[a-zA-Z0-9_-]{3,16}$/; */
     	alert(empName);
@@ -542,34 +452,29 @@ var Render = {
     	alert("校验成功");
     	return true;
     }
-
-    
-  //保存员工数据
+  //保存客户数据
     $("#supplier_save_bt").click(function () {
         //1.模态框中的数据
         
         //1.1  对输入框进行校验
-       /*  if(!validate_add_form()){
+     /*    if(!validate_add_form()){
         	return false;
         } */
-        
         //2.发送ajax请求
-
-        // alert($("#myModal form").serialize());
         $.ajax({
-            url: "${APP_PATH}/supplier/add",
+            url: "${APP_PATH}/consumer/add",
             type: "POST",
             data: $("#myModal form").serialize(),
             success: function (result) {
+                //员工保存成功
                 //1.关闭模态框
                 $("#myModal").modal('hide');
                 //2.来到最后一页，显示数据
-                if(totalRecord%5==0){
-                	 to_page(currentPage+1);
-                }else{
-                	 to_page(currentPage);
-                }
-               
+        		if(totalRecord%5==0){
+        			to_page(currentPage+1);
+        		}else{
+        			to_page(currentPage);
+        		}
                 layer.msg('保存成功', {
 	 				  icon: 1,
 	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
@@ -580,76 +485,76 @@ var Render = {
         });
     });
   
-  //修改供应商信息
+  //修改客户信息
   $(document).on("click",".edit_bt",function(){
 	 // alert("hello");
-	 //查出供应商信息
+	 //查出客户信息
 	 getSupplier($(this).attr("edit-id"));
-	 //把供应商表中的id传递给更新按钮
+	 //把客户表中的id传递给更新按钮
 	 $("#supplier_up_bt").attr("edit-id",$(this).attr("edit-id"));
 	//弹出模态框
-      $("#supplier_Up_Modal").modal({
+      $("#goods_up_model").modal({
           backdrop: "static"
       });
   });
-  //查出供应商信息
+  //查出客户信息
   function getSupplier(id){
 	  $.ajax({
-		  url:"${APP_PATH}/supplier/one/"+id,
+		  url:"${APP_PATH}/consumer/one/"+id,
 		  type:"GET",
 		  success:function(result){
-			  /* console.log(result); */
-			 /*  $("#u_cId").val(result.id); */
-			  $("#u_phone").val(result.phone);
-			  $("#u_name").val(result.name);
-			  $("#u_cId").val(result.cId);
-			  $("#u_contacter").val(result.contacter);
-			  $("#u_address").val(result.address);
-			  $("#u_fax").val(result.fax);
-			  $("#u_mark").val(result.mark);
-			  $("#u_mobile").val(result.mobile);
+			  $("#c_id").val(result.entend.entend.cid);
+			  $("#c_username").val(result.entend.entend.username);
+			  $("#c_type").val(result.entend.entend.type);
+			  $("#c_name").val(result.entend.entend.name);
+			  $("#c_phone").val(result.entend.entend.phone);
+			 	 var path = result.entend.entend.path;
+		         $("#newsImgUrl1").val(path);
+		         $("#showUploadImg1").css("display","block");
+		         $("#showUploadImg1").attr("src","../images/"+path).attr("width",100).attr("height",100);
 		  }
 	  });
   };
-  //点击更新按钮，更新供应商信息
+  //点击更新按钮，更新客户信息
   $("#supplier_up_bt").click(function(){
 	  $.ajax({
-		  url:"${APP_PATH}/supplier/update/"+$(this).attr("edit-id"),
+		  url:"${APP_PATH}/consumer/update/"+$(this).attr("edit-id"),
 		  type:"POST",
-		  data:$("#supplier_Up_Modal form").serialize(),
+		  data:$("#goods_up_model form").serialize(),
 		  success:function(result){
-			  alert(result);
-			  //1.关闭模态框
-              $("#supplier_Up_Modal").modal('hide');
-              //2.来到最后一页，显示数据
-              to_page(1);
-              layer.msg('更新成功', {
+			  if(result.code==100) {
+					//1.关闭模态框
+	              $("#goods_up_model").modal('hide');
+	              //2.来到最后一页，显示数据
+	              to_page(1);
+				  layer.msg('修改成功', {
 	 				  icon: 1,
 	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
 	 				}, function(){
 	 				  //do something
 	 				}); 
+				  }
+			  
 		  }
 	  });
   });
-  //删除供应商信息
+  //删除客户信息
   $(document).on("click",".delete_bt",function(){
 	  
 		var supplierId = $(this).attr("delete-id");
 	  	var supplierName = $(this).attr("delete-name");
  		if(confirm("确定删除【"+supplierName+"】吗？")){
  			$.ajax({
- 	 			url:"${APP_PATH}/supplier/delete/"+supplierId,
+ 	 			url:"${APP_PATH}/consumer/delete/"+supplierId,
  	 			type:"GET",
  	 			success :function(result){
- 	 				alert(result);
  	 				to_page(1);
  	 				layer.msg('删除成功', {
- 	 				  icon: 1,
- 	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
- 	 				}, function(){
- 	 				  //do something
- 	 				});  
+ 		 				  icon: 1,
+ 		 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+ 		 				}, function(){
+ 		 				  //do something
+ 		 				}); 
  	 			}
  	 		});	
  		}

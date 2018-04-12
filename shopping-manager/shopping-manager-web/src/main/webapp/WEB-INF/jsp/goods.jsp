@@ -348,11 +348,11 @@
                 <%--显示分页信息--%>
 			    <div class="row ">
 			        <%--分页文字信息--%>
-			        <div class="col-md-6" id="page_info">
+			        <div class="col-md-8" id="page_info">
 			
 			        </div>
 			        <%--分页条--%>
-			        <div class="col-md-6" id="page_nav">
+			        <div class="col-md-4" id="page_nav">
 			
 			        </div>
 			    </div>
