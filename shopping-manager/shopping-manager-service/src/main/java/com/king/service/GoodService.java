@@ -18,4 +18,9 @@ public interface GoodService {
 	 * 根据id查询
 	 */
 	Goods selectById(Integer id);
+	
+	/**
+	 * 更新商品信息
+	 */
+	Integer updateGoods(Goods goods);
 }

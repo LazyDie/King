@@ -280,6 +280,93 @@
     </div>
 </div>
 
+<!-- 货品入库模态框 -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="goods_ruku_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">货品采购</h4>
+      </div>
+       <form id="goodsAdd">
+      <div class="modal-body">
+     
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+         <div class="col-md-12" >
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+          	<div class="input-group">
+		  		<span style="padding:6px 6px">货品编号</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="gid" class="layui-input" readonly="readonly" id="R_id"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+         	 <div class="input-group">
+		  		<span style="padding:6px 6px">货品名称</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="name"  class="layui-input" readonly="readonly" id="R_name" ></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
+          	 <div class="input-group">
+          		<span style="padding:6px 6px">供应商</span>
+		  		<div class="layui-input-inline">
+					<select class="form-control" name="supplier" id="goods_ruku_select" autocomplete="off">
+						<option value="" selected disabled>请选择供应商</option>
+
+					</select>
+				</div>
+			</div>	
+          </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+        <div class="col-md-12" >
+            <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+              <div class="input-group">
+		  		<span style="padding:6px 6px">单价</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="pprice" class="layui-input" readonly="readonly" id="R_ppirce"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+          	<div class="input-group">
+		  		<span style="padding:6px 6px">数量</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="number" class="layui-input" value="1" ></input>
+				</div>
+			</div>
+		  </div>
+          </div>
+        </div>      
+        <div class="row" style="margin-top:20px;overflow:hidden;">
+        <div class="col-md-12" >
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+	      	  <div class="input-group">
+			  		<!-- <span style="padding:6px 6px">图片</span> -->
+			  		<div class="layui-input-inline">
+						<img id="showRuKuImage"  width="100" height="100" style="display: none;" />
+						<input type="hidden" id="rukuImgUrl1" name="path" value="" class="layui-input">
+					</div>
+				</div>
+			</div>
+			</div>
+        </div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="supplier_ruku_bt">采购</button>
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+    </div>
+</div>
 <!-- 表格主体 -->
 
 <form class="layui-form" action="supplierSelectAll" method="get">
@@ -333,9 +420,9 @@
 
                             <th width="5%" param="{name:'sortNo'}">零售价</th>
                             
-                            <th width="10%" param="{name:'sortNo'}">当前库存</th>
+                            <th width="5%" param="{name:'sortNo'}">当前库存</th>
                             
-                            <th width="10%" param="{name:'sortNo'}">操作</th>
+                            <th width="15%" param="{name:'sortNo'}">操作</th>
                      
                        </tr>
                     
@@ -442,6 +529,18 @@ layui.use(['form','laypage','upload'], function(){
             var suCreateTime = $("<td></td>").append(item.ppirce);
             var suAddress = $("<td></td>").append(item.rprice);
             var suMark = $("<td></td>").append(item.number);
+            
+            
+            
+            /* 入库 */
+            var rukuBtn = $("<button></button>").addClass("btn btn-success btn-xs ruku_bt")
+               .append($("<span></span>").addClass("glyphicon glyphicon-import")).append("采购");
+            rukuBtn.attr("ruku-id",item.id);
+            /* 出库 */
+            var chukuBtn = $("<button></button>").addClass("btn btn-info btn-xs chuku_bt")
+               .append($("<span></span>").addClass("glyphicon glyphicon-export")).append("销售");
+            chukuBtn.attr("chuku-id",item.id);
+            
             /*<button class="btn btn-primary btn-xs">
              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
              编辑
@@ -457,7 +556,12 @@ layui.use(['form','laypage','upload'], function(){
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
              deleteBtn.attr("delete-id",item.id);
              deleteBtn.attr("delete-name",item.name);
-            var btnTd = $("<td></td>").append(editBtn).append(" ").append(deleteBtn);
+             
+          
+             
+            var btnTd = $("<td></td>").append(editBtn).append(" ").append(deleteBtn)
+           				 .append(" ").append(rukuBtn)
+           				 .append(" ").append(chukuBtn);
             /*append方法执行完成之后还是原来的元素*/
             $("<tr></tr>").append(empIdTd)
             	.append(supplier_id)
@@ -615,6 +719,7 @@ layui.use(['form','laypage','upload'], function(){
 		  url:"${APP_PATH}/goods/one/"+id,
 		  type:"GET",
 		  success:function(result){
+			  /////////////=================================
 			  $("#g_id").val(result.entend.entend.gid);
 			  $("#g_name").val(result.entend.entend.name);
 			  $("#g_barcode").val(result.entend.entend.barcode);
@@ -623,10 +728,20 @@ layui.use(['form','laypage','upload'], function(){
 			  $("#g_pprice").val(result.entend.entend.ppirce);
 			  $("#g_rpirce").val(result.entend.entend.rprice);
 			  $("#g_number").val(result.entend.entend.number);
+	
 			 	 var path = result.entend.entend.path;
 		         $("#newsImgUrl1").val(path);
 		         $("#showUploadImg1").css("display","block");
 		         $("#showUploadImg1").attr("src","../images/"+path).attr("width",100).attr("height",100);
+				  ///入库
+				    $("#R_id").val(result.entend.entend.gid);//入库
+				    $("#R_name").val(result.entend.entend.name);
+				    $("#R_ppirce").val(result.entend.entend.ppirce);
+				    
+				    $("#rukuImgUrl1").val(path);
+				    /*  $("#showRuKuImage").css("display","block");
+			        $("#showRuKuImage").attr("src","../images/"+path).attr("width",100).attr("height",100); */
+				    ////////////===================================
 		  }
 	  });
   };
@@ -637,7 +752,6 @@ layui.use(['form','laypage','upload'], function(){
 		  type:"POST",
 		  data:$("#supplier_Up_Modal form").serialize(),
 		  success:function(result){
-			  alert(result);
 			  //1.关闭模态框
               $("#supplier_Up_Modal").modal('hide');
               //2.来到最后一页，显示数据
@@ -662,6 +776,60 @@ layui.use(['form','laypage','upload'], function(){
  		}
 	  	
   });
+  //查询所有供应商
+  function getSuppliers1(){
+	  //清空
+      $("#goods_ruku_select").empty();
+      $.ajax({
+          url: "${APP_PATH}/pageHelper",
+          type: "GET",
+          success: function (result) {
+              //将部门信息添加到下拉列表
+
+              $.each(result.list, function () {
+                  var optionEle = $("<option></option>").append(this.name).attr("value", this.name);
+                  optionEle.appendTo("#goods_ruku_select");
+              });
+          }
+      });
+  }
+  
+  //商品入库
+   //修改货品信息，修改按钮
+  $(document).on("click",".ruku_bt",function(){
+	 // alert("hello");
+	 //查出货品信息
+	 getSupplier($(this).attr("ruku-id"));
+	 //查出供应商
+	 getSuppliers1();
+	 //把货品表中的id传递给更新按钮
+	 $("#supplier_ruku_bt").attr("ruku-id",$(this).attr("ruku-id"));
+	//弹出模态框
+      $("#goods_ruku_model").modal({
+          backdrop: "static"
+      });
+  });
+  //入库按钮
+   $("#supplier_ruku_bt").click(function(){
+	  $.ajax({
+		  url:"${APP_PATH}/goods/ruku/"+$(this).attr("ruku-id"),
+		  type:"POST",
+		  data:$("#goods_ruku_model form").serialize(),
+		  success:function(result){
+			  //1.关闭模态框
+              $("#goods_ruku_model").modal('hide');
+              //2.来到最后一页，显示数据
+              to_page(1);
+              layer.msg('采购成功', {
+	 				  icon: 1,
+	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+	 				}, function(){
+	 				  //do something
+	 				}); 
+		  }
+	  });
+  });
+  
 </script>          
 </body>
 

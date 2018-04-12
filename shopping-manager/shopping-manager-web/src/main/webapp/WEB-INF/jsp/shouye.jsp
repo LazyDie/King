@@ -96,7 +96,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="layui-icon">&#xe63c;</i>&nbsp;采购明细</a>
            <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="addCommodity"><i></i>&nbsp;进货单据</a></dd>
+		       <dd><a href="javascript:;" data-url="goodsRuKu"><i></i>&nbsp;进货记录</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;进货货品</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货单据</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货货品</a></dd>

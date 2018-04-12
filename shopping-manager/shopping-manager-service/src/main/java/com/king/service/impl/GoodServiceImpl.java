@@ -31,6 +31,12 @@ public class GoodServiceImpl implements GoodService{
 		return goodsMapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public Integer updateGoods(Goods goods) {
+		// TODO Auto-generated method stub
+		return goodsMapper.updateByPrimaryKey(goods);
+	}
+
 
 	
 	
