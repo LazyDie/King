@@ -6,7 +6,7 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="c_id" property="cId" jdbcType="VARCHAR" />
     <result column="contacter" property="contacter" jdbcType="VARCHAR" />
-    <result column="mobile" property="mobile" jdbcType="INTEGER" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="fax" property="fax" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
@@ -116,8 +116,8 @@
       fax, type, mark, createTime, name
       )
     values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{cId,jdbcType=VARCHAR}, 
-      #{contacter,jdbcType=VARCHAR}, #{mobile,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
-      #{fax,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+      #{contacter,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{mark,jdbcType=VARCHAR}, Now(),
       #{name,jdbcType=VARCHAR}
       )
   </insert>
@@ -169,7 +169,7 @@
         #{contacter,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
-        #{mobile,jdbcType=INTEGER},
+        #{mobile,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
@@ -210,7 +210,7 @@
         contacter = #{record.contacter,jdbcType=VARCHAR},
       </if>
       <if test="record.mobile != null" >
-        mobile = #{record.mobile,jdbcType=INTEGER},
+        mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
@@ -238,7 +238,7 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       c_id = #{record.cId,jdbcType=VARCHAR},
       contacter = #{record.contacter,jdbcType=VARCHAR},
-      mobile = #{record.mobile,jdbcType=INTEGER},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       fax = #{record.fax,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
@@ -261,7 +261,7 @@
         contacter = #{contacter,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
-        mobile = #{mobile,jdbcType=INTEGER},
+        mobile = #{mobile,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
@@ -286,7 +286,7 @@
     set phone = #{phone,jdbcType=VARCHAR},
       c_id = #{cId,jdbcType=VARCHAR},
       contacter = #{contacter,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=INTEGER},
+      mobile = #{mobile,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       fax = #{fax,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},

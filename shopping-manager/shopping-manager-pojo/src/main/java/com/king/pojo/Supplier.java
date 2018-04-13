@@ -2,6 +2,8 @@ package com.king.pojo;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Supplier {
     private Integer id;
 
@@ -13,7 +15,7 @@ public class Supplier {
 
     private String contacter;
 
-    private Integer mobile;
+    private String mobile;
 
     private String address;
 
@@ -66,15 +68,16 @@ public class Supplier {
         this.contacter = contacter == null ? null : contacter.trim();
     }
 
-    public Integer getMobile() {
-        return mobile;
-    }
 
-    public void setMobile(Integer mobile) {
-        this.mobile = mobile;
-    }
+    public String getMobile() {
+		return mobile;
+	}
 
-    public String getAddress() {
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getAddress() {
         return address;
     }
 
@@ -105,7 +108,7 @@ public class Supplier {
     public void setMark(String mark) {
         this.mark = mark == null ? null : mark.trim();
     }
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getCreatetime() {
         return createtime;
     }

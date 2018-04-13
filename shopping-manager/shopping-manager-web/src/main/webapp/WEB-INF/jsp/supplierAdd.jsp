@@ -420,7 +420,7 @@ var Render = {
             var empEmailTd = $("<td></td>").append(item.contacter);
             var detpNameTd = $("<td></td>").append(item.phone);
             var suMobile = $("<td></td>").append(item.mobile);
-            var suCreateTime = $("<td></td>").append(item.createTime);
+            var suCreateTime = $("<td></td>").append(item.createtime);
             var suAddress = $("<td></td>").append(item.address);
             var suMark = $("<td></td>").append(item.mark);
             /*<button class="btn btn-primary btn-xs">
@@ -438,6 +438,7 @@ var Render = {
                 .append($("<span></span>").addClass("glyphicon glyphicon-trash")).append("删除");
              deleteBtn.attr("delete-id",item.id);
              deleteBtn.attr("delete-name",item.name);
+  
             var btnTd = $("<td></td>").append(editBtn).append(" ").append(deleteBtn);
             /*append方法执行完成之后还是原来的元素*/
             $("<tr></tr>").append(empIdTd)
@@ -618,7 +619,6 @@ var Render = {
 		  type:"POST",
 		  data:$("#supplier_Up_Modal form").serialize(),
 		  success:function(result){
-			  alert(result);
 			  //1.关闭模态框
               $("#supplier_Up_Modal").modal('hide');
               //2.来到最后一页，显示数据
@@ -642,7 +642,6 @@ var Render = {
  	 			url:"${APP_PATH}/supplier/delete/"+supplierId,
  	 			type:"GET",
  	 			success :function(result){
- 	 				alert(result);
  	 				to_page(1);
  	 				layer.msg('删除成功', {
  	 				  icon: 1,

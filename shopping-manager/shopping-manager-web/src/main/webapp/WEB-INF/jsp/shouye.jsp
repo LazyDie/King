@@ -70,7 +70,7 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test" id="ulmenu">
        
-        <li class="layui-nav-item">
+      <!--   <li class="layui-nav-item">
           <a class="" href="javascript:;" data-url=""><i class="fa fa-coffee"></i>&nbsp;开单</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;" data-url="login"><i></i>&nbsp;销售出货</a></dd>
@@ -82,27 +82,52 @@
             <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;其他收入</a></dd>
             <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;其他支出</a></dd>
           </dl>
+        </li> -->
+              <li class="layui-nav-item">
+          <a href="javascript:;" data-url=""><i class="fa fa-handshake-o"></i>&nbsp;供应商管理</a>
+           <dl class="layui-nav-child">
+		       <dd><a href="javascript:;" data-url="supplierAdd"><i></i>&nbsp;供应商管理</a></dd>
+		    </dl>
+        </li>
+         <li class="layui-nav-item">
+          <a href="javascript:;" data-url=""><i class="fa fa-user-o"></i>&nbsp;客户管理</a>
+           <dl class="layui-nav-child">
+		       <dd><a href="javascript:;" data-url="consumer"><i></i>&nbsp;客户管理</a></dd>
+	            <!-- <dd><a href="javascript:;" data-url="tupian"><i></i>&nbsp;报价管理</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;会员设置</a></dd> -->
+		    </dl>
+        </li>
+         <li class="layui-nav-item">
+          <a href="javascript:;" data-url=""><i class="fa fa-info fa-fw"></i>&nbsp;货品管理</a>
+           <dl class="layui-nav-child">
+		       <dd><a href="javascript:;" data-url="goods"><i></i>&nbsp;货品列表</a></dd>
+	        <!--     <dd><a href="javascript:;" data-url=""><i></i>&nbsp;货品类别</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;货品单位</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;报损原因</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;报损查询</a></dd> -->
+		    </dl>
+        </li>
+         <li class="layui-nav-item">
+          <a href="javascript:;" data-url=""><i class="layui-icon">&#xe63c;</i>&nbsp;采购明细</a>
+           <dl class="layui-nav-child">
+		       <dd><a href="javascript:;" data-url="goodsRuKu"><i></i>&nbsp;进货记录</a></dd>
+	        <!--     <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;进货货品</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货单据</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货货品</a></dd>
+	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;收货单据</a></dd> -->
+		    </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="fa fa-building-o"></i>&nbsp;销售明细</a>
            <dl class="layui-nav-child">
-		    <dd><a href="javascript:;" data-url="addCommodity"><i></i>&nbsp;销售单据</a></dd>
-            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;销售货品</a></dd>
+		    <dd><a href="javascript:;" data-url="goodsChuKu"><i></i>&nbsp;销售记录</a></dd>
+      <!--       <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;销售货品</a></dd>
             <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货单据</a></dd>
             <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货货品</a></dd>
-            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;收货单据</a></dd>
+            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;收货单据</a></dd> -->
 		    </dl>
         </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;" data-url=""><i class="layui-icon">&#xe63c;</i>&nbsp;采购明细</a>
-           <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="goodsRuKu"><i></i>&nbsp;进货记录</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;进货货品</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货单据</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;退货货品</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;收货单据</a></dd>
-		    </dl>
-        </li>
+       
         <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="layui-icon">&#xe63c;</i>&nbsp;收支明细</a>
            <dl class="layui-nav-child">
@@ -111,31 +136,10 @@
 		    </dl>
         </li>
 		
-		 <li class="layui-nav-item">
-          <a href="javascript:;" data-url=""><i class="fa fa-info fa-fw"></i>&nbsp;货品管理</a>
-           <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="goods"><i></i>&nbsp;货品列表</a></dd>
-	            <dd><a href="javascript:;" data-url=""><i></i>&nbsp;货品类别</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;货品单位</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;报损原因</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;报损查询</a></dd>
-		    </dl>
-        </li>
+		
         
-         <li class="layui-nav-item">
-          <a href="javascript:;" data-url=""><i class="fa fa-user-o"></i>&nbsp;客户管理</a>
-           <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="consumer"><i></i>&nbsp;客户管理</a></dd>
-	            <dd><a href="javascript:;" data-url="tupian"><i></i>&nbsp;报价管理</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;会员设置</a></dd>
-		    </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;" data-url=""><i class="fa fa-handshake-o"></i>&nbsp;供应商管理</a>
-           <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="supplierAdd"><i></i>&nbsp;供应商管理</a></dd>
-		    </dl>
-        </li>
+        
+  
         
           <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="fa fa-bar-chart-o"></i>&nbsp;报表</a>
@@ -151,14 +155,14 @@
 		    </dl>
         </li>
         
-          <li class="layui-nav-item">
+         <!--  <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="fa fa-info fa-fw"></i>&nbsp;门店管理</a>
            <dl class="layui-nav-child">
 		       <dd><a href="javascript:;" data-url="addCommodity"><i></i>&nbsp;账户管理</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;门店信息</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;系统公告</a></dd>
 		    </dl>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -197,16 +201,16 @@ layui.use(['element','layer'], function(){
           ,area: '300px;'
           ,shade: 0.8
           ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-          ,btn: ['火速围观', '残忍拒绝']
+          ,btn: [ '关闭']
           ,btnAlign: 'c'
           ,moveType: 0 //拖拽模式，0或者1
-          ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">你知道吗？亲！<br>layer ≠ layui<br><br>layer只是作为Layui的一个弹层模块，由于其用户基数较大，所以常常会有人以为layui是layerui<br><br>layer虽然已被 Layui 收编为内置的弹层模块，但仍然会作为一个独立组件全力维护、升级。<br><br>我们此后的征途是星辰大海 ^_^</div>'
+          ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;"><br>欢迎来到天天批发市场管理系统<br><br>本系统旨在帮助商户能更加高效的管理商品库存，并记录收入支出，帮助商家更好地管理店铺<br><br>系统还在不断升级中<br><br>我们此后的征途是星辰大海 ^_^</div>'
           ,success: function(layero){
               var btn = layero.find('.layui-layer-btn');
-              btn.find('.layui-layer-btn0').attr({
+              /* btn.find('.layui-layer-btn0').attr({
                   href: 'http://www.layui.com/'
                   ,target: '_blank'
-              });
+              }); */
           }
       });
   });

@@ -367,6 +367,95 @@
     </div><!-- /.modal-content -->
     </div>
 </div>
+
+
+<!-- 货品出库模态框 -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="goods_chuku_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">货品销售</h4>
+      </div>
+       <form id="goodsAdd">
+      <div class="modal-body">
+     
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+         <div class="col-md-12" >
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+          	<div class="input-group">
+		  		<span style="padding:6px 6px">货品编号</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="gid" class="layui-input" readonly="readonly" id="C_id"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+         	 <div class="input-group">
+		  		<span style="padding:6px 6px">货品名称</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="name"  class="layui-input" readonly="readonly" id="C_name" ></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;padding-left:18px;">
+          	 <div class="input-group">
+          		<span style="padding:6px 6px">客户</span>
+		  		<div class="layui-input-inline">
+					<select class="form-control" name="consumer" id="goods_chuku_select" autocomplete="off">
+						<option value="" selected disabled>请选择客户</option>
+
+					</select>
+				</div>
+			</div>	
+          </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;overflow:hidden;">
+        <div class="col-md-12" >
+            <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+              <div class="input-group">
+		  		<span style="padding:6px 6px">单价</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="rprice" class="layui-input" readonly="readonly" id="C_rpirce"></input>
+				</div>
+			</div>
+		  </div>
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+          	<div class="input-group">
+		  		<span style="padding:6px 6px">数量</span>
+		  		<div class="layui-input-inline">
+					<input type="text" name="number" class="layui-input" value="1" ></input>
+				</div>
+			</div>
+		  </div>
+          </div>
+        </div>      
+        <div class="row" style="margin-top:20px;overflow:hidden;">
+        <div class="col-md-12" >
+          <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
+	      	  <div class="input-group">
+			  		<!-- <span style="padding:6px 6px">图片</span> -->
+			  		<div class="layui-input-inline">
+						<img id="showRuKuImage"  width="100" height="100" style="display: none;" />
+						<input type="hidden" id="chukuImgUrl1" name="path" value="" class="layui-input">
+					</div>
+				</div>
+			</div>
+			</div>
+        </div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="supplier_chuku_bt">销售</button>
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+    </div>
+</div>
 <!-- 表格主体 -->
 
 <form class="layui-form" action="supplierSelectAll" method="get">
@@ -412,8 +501,8 @@
 
                             <th width="10%" param="{name:'paraKey'}">类别</th>
 
-                            <th width="10%" param="{name:'sortNo'}">库存成本</th>
-                            
+<!--                             <th width="10%" param="{name:'sortNo'}">库存成本</th>
+ -->                            
                             <th width="5%" param="{name:'sortNo'}">采购价</th>
                             
                              <th width="5%" param="{name:'paraKey'}">批发价</th>
@@ -524,7 +613,7 @@ layui.use(['form','laypage','upload'], function(){
             var empNameTd = $("<td></td>").append(item.name);
             var empGenderTd = $("<td></td>").append(item.barcode)
             var empEmailTd = $("<td></td>").append(item.cateId);
-            var detpNameTd = $("<td></td>").append(item.cateId);//库存成本
+         /*    var detpNameTd = $("<td></td>").append(item.cateId);//库存成本 */
             var suMobile = $("<td></td>").append(item.cpirce);
             var suCreateTime = $("<td></td>").append(item.ppirce);
             var suAddress = $("<td></td>").append(item.rprice);
@@ -559,16 +648,16 @@ layui.use(['form','laypage','upload'], function(){
              
           
              
-            var btnTd = $("<td></td>").append(editBtn).append(" ").append(deleteBtn)
-           				 .append(" ").append(rukuBtn)
-           				 .append(" ").append(chukuBtn);
+            var btnTd = $("<td></td>").append(rukuBtn).append(" ").append(chukuBtn)
+           				 .append(" ").append(editBtn)
+           				 .append(" ").append(deleteBtn);
             /*append方法执行完成之后还是原来的元素*/
             $("<tr></tr>").append(empIdTd)
             	.append(supplier_id)
                 .append(empNameTd)
                 .append(empGenderTd)
                 .append(empEmailTd)
-                .append(detpNameTd)
+          /*       .append(detpNameTd) */
                 .append(suMobile)
                 .append(suCreateTime)
                 .append(suAddress)
@@ -739,6 +828,15 @@ layui.use(['form','laypage','upload'], function(){
 				    $("#R_ppirce").val(result.entend.entend.ppirce);
 				    
 				    $("#rukuImgUrl1").val(path);
+				    
+				    
+				    //出库
+				     $("#C_id").val(result.entend.entend.gid);//入库
+				    $("#C_name").val(result.entend.entend.name);
+				    $("#C_rpirce").val(result.entend.entend.rprice);
+				    
+				    $("#chukuImgUrl1").val(path);
+				    
 				    /*  $("#showRuKuImage").css("display","block");
 			        $("#showRuKuImage").attr("src","../images/"+path).attr("width",100).attr("height",100); */
 				    ////////////===================================
@@ -821,6 +919,59 @@ layui.use(['form','laypage','upload'], function(){
               //2.来到最后一页，显示数据
               to_page(1);
               layer.msg('采购成功', {
+	 				  icon: 1,
+	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+	 				}, function(){
+	 				  //do something
+	 				}); 
+		  }
+	  });
+  });
+  
+ //查出客户
+	function getConsumer(){
+		  //清空
+	      $("#goods_chuku_select").empty();
+	      $.ajax({
+	          url: "${APP_PATH}/consumer/all",
+	          type: "GET",
+	          success: function (result) {
+	              //将部门信息添加到下拉列表
+
+	              $.each(result.entend.pageInfo.list, function () {
+	                  var optionEle = $("<option></option>").append(this.name).attr("value", this.name);
+	                  optionEle.appendTo("#goods_chuku_select");
+	              });
+	          }
+	      });
+ 	}
+  
+ //商品出库
+   //修改货品信息，修改按钮
+  $(document).on("click",".chuku_bt",function(){
+	 //查出货品信息
+	 getSupplier($(this).attr("chuku-id"));
+	 //查出客户
+	 getConsumer();
+	 //把货品表中的id传递给更新按钮
+	 $("#supplier_chuku_bt").attr("chuku-id",$(this).attr("chuku-id"));
+	//弹出模态框
+      $("#goods_chuku_model").modal({
+          backdrop: "static"
+      });
+  });
+  //出库按钮
+   $("#supplier_chuku_bt").click(function(){
+	  $.ajax({
+		  url:"${APP_PATH}/goods/chuku/"+$(this).attr("chuku-id"),
+		  type:"POST",
+		  data:$("#goods_chuku_model form").serialize(),
+		  success:function(result){
+			  //1.关闭模态框
+              $("#goods_chuku_model").modal('hide');
+              //2.来到最后一页，显示数据
+              to_page(1);
+              layer.msg('销售成功', {
 	 				  icon: 1,
 	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
 	 				}, function(){

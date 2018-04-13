@@ -33,8 +33,8 @@
 <body>
 
 <!-- 表格主体 -->
-<!-- 
-<form class="layui-form" action="supplierSelectAll" method="get">
+
+<!-- <form class="layui-form" action="supplierSelectAll" method="get">
 	<div class="layui-form-item">
 		<label class="layui-form-label">搜索货品</label>
 		<div class="layui-input-inline">
@@ -59,15 +59,15 @@
 							
                             <th width="10%" param="{name:'paraCode'}">货品名称</th>
 
-                            <th width="10%" param="{name:'paraName'}">供应商</th>
+                            <th width="10%" param="{name:'paraName'}">客户</th>
 
                             <th width="10%" param="{name:'paraKey'}">单价(元)</th>
 
                             <th width="10%" param="{name:'sortNo'}">数量</th>
                             
-                            <th width="10%" param="{name:'sortNo'}">支出金额(元)</th>
+                            <th width="10%" param="{name:'sortNo'}">收入金额(元)</th>
                             
-                             <th width="10%" param="{name:'paraKey'}">采购时间</th>
+                             <th width="10%" param="{name:'paraKey'}">创建时间</th>
                             
                             <th width="10%" param="{name:'sortNo'}">操作</th>
                      
@@ -125,7 +125,7 @@ layui.use(['form','laypage','upload'], function(){
     //根据页码显示页面
     function to_page(pn) {
         $.ajax({
-            url: "${APP_PATH}/storage/selectAll",
+            url: "${APP_PATH}/sales/selectAll",
             data: "pn=" + pn,
             type: "GET",
             success: function (result) {
@@ -149,7 +149,7 @@ layui.use(['form','laypage','upload'], function(){
             var empIdTd = $("<td></td>").append(item.id);
             var supplier_id = $("<td></td>").append('<img width="50" height="50" data-img="1" src="../images/'+item.path+'"></img>');
             var empNameTd = $("<td></td>").append(item.name);
-            var empGenderTd = $("<td></td>").append(item.sname)
+            var empGenderTd = $("<td></td>").append(item.cname)
             var empEmailTd = $("<td></td>").append(item.money);
             var detpNameTd = $("<td></td>").append(item.number);//库存成本
             var suMobile = $("<td></td>").append(item.totalmoney);
