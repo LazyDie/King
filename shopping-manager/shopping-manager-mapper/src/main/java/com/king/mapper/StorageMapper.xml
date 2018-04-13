@@ -101,6 +101,13 @@
     from storage
   </select>
   
+  <select id="selectXiaoLiang" resultMap="BaseResultMap">
+    select 
+    name , sum(number) as number
+    from storage
+    group by name
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from storage
     where id = #{id,jdbcType=INTEGER}

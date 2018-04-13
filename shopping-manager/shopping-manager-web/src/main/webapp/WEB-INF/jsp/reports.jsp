@@ -47,7 +47,7 @@
     	            itemStyle: {
     	                emphasis: {
     	                    shadowBlur: 10,
-    	                    shadowOffsetX: 0,
+    	                    shadowOffsetX: 10,
     	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
     	                }
     	            }

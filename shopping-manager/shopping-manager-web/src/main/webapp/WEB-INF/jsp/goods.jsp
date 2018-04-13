@@ -825,7 +825,7 @@ layui.use(['form','laypage','upload'], function(){
 				  ///入库
 				    $("#R_id").val(result.entend.entend.gid);//入库
 				    $("#R_name").val(result.entend.entend.name);
-				    $("#R_ppirce").val(result.entend.entend.ppirce);
+				    $("#R_ppirce").val(result.entend.entend.cpirce);
 				    
 				    $("#rukuImgUrl1").val(path);
 				    

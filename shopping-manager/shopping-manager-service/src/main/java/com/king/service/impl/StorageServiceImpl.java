@@ -24,6 +24,11 @@ public class StorageServiceImpl implements StorageService{
 		// TODO Auto-generated method stub
 		return storageMapper.selectAll();
 	}
+	@Override
+	public List<Storage> selectXiaoLiang() {
+		// TODO Auto-generated method stub
+		return storageMapper.selectXiaoLiang();
+	}
 
 	
 	

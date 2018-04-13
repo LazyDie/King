@@ -72,4 +72,15 @@ public class SalesController {
 		return Msg.success().add("pageInfo", page);
 	}
 	
+	/**
+	 * 查询每种商品的销售情况
+	 * @return
+	 */
+	
+	@RequestMapping(value="/sale/xiaoliang",method=RequestMethod.GET)
+	public Msg selectXiaoLiang(){
+		List<Sales> results = salesService.selectXiaoLiang();
+		return Msg.success().add("xiaoliang", results);
+	}
+	
 }

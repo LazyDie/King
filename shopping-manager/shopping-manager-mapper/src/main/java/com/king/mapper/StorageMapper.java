@@ -29,4 +29,6 @@ public interface StorageMapper {
     int updateByPrimaryKey(Storage record);
     
     List<Storage> selectAll();
+    
+    List<Storage> selectXiaoLiang();
 }

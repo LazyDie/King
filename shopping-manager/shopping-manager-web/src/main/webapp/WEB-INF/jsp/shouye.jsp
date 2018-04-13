@@ -144,13 +144,14 @@
           <li class="layui-nav-item">
           <a href="javascript:;" data-url=""><i class="fa fa-bar-chart-o"></i>&nbsp;报表</a>
            <dl class="layui-nav-child">
-		       <dd><a href="javascript:;" data-url="reports"><i></i>&nbsp;销售统计</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;采购统计</a></dd>
+		       <dd><a href="javascript:;" data-url="reports-consumer"><i></i>&nbsp;客户类型统计</a></dd>
+	            <dd><a href="javascript:;" data-url="reports-xiaoliang"><i></i>&nbsp;货品采购统计</a></dd>
+	            <dd><a href="javascript:;" data-url="reports-xiaoliang1"><i></i>&nbsp;货品销售统计</a></dd>
+	            <dd><a href="javascript:;" data-url="reports-income-expend"><i></i>&nbsp;收支分析</a></dd>
+	            <dd><a href="javascript:;" data-url="reports"><i></i>&nbsp;采购统计</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;利润统计</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;支出分析</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;收入分析</a></dd>
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;销售业绩统计</a></dd>
-	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;单品销量排行</a></dd>
+	          
 	            <dd><a href="javascript:;" data-url="u_website"><i></i>&nbsp;货品报损统计</a></dd>
 		    </dl>
         </li>

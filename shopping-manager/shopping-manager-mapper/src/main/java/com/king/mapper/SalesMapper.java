@@ -29,4 +29,6 @@ public interface SalesMapper {
     int updateByPrimaryKey(Sales record);
     
     List<Sales> selectAll();
+    
+    List<Sales> selectXiaoLiang();
 }

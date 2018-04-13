@@ -101,6 +101,13 @@
     from sales
   </select>
   
+  <select id="selectXiaoLiang" resultMap="BaseResultMap" >
+    select 
+    name , sum(number) as number
+    from sales
+    group by name
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sales
     where id = #{id,jdbcType=INTEGER}

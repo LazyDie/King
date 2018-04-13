@@ -69,6 +69,21 @@ public class StorageController {
 		PageInfo<Storage> page = new PageInfo<>(results,5);
 		return Msg.success().add("pageInfo", page);
 	}
+	/**
+	 * 查询每种商品的采购报表
+	 * @return
+	 */
 	
-	
+	@RequestMapping(value="/storage/xiaoliang",method=RequestMethod.GET)
+	public Msg selectXiaoLiang(){
+		List<Storage> results = storageService.selectXiaoLiang();
+		return Msg.success().add("xiaoliang", results);
+	}
+	/**
+	 * 查询收入和支出
+	 */
+	@RequestMapping(value="",method=RequestMethod.GET)
+	public Msg selectIncomeAndExpend(){
+		return null;
+	}
 }

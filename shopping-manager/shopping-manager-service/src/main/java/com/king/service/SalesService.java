@@ -9,4 +9,6 @@ public interface SalesService {
 	List<Sales> selectAllSales();
 	
 	Integer addSales(Sales sales);
+	
+	List<Sales> selectXiaoLiang();
 }

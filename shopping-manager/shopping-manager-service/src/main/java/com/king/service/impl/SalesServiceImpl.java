@@ -27,6 +27,12 @@ public class SalesServiceImpl implements SalesService{
 		return salesMapper.insert(sales);
 	}
 
+	@Override
+	public List<Sales> selectXiaoLiang() {
+		// TODO Auto-generated method stub
+		return salesMapper.selectXiaoLiang();
+	}
+
 
 	
 }

@@ -16,4 +16,9 @@ public interface StorageService {
 	 *查询所有记录 
 	 */
 	List<Storage> selectAll();
+	
+	/**
+	 * 查询每种商品的销量
+	 */
+	List<Storage> selectXiaoLiang();
 }

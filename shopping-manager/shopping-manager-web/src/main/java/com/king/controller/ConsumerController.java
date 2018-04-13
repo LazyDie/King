@@ -1,5 +1,6 @@
 package com.king.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,29 @@ public class ConsumerController {
 		System.out.println(results.get(0).getCreatetime());
 		PageInfo<Consumer> page = new PageInfo<>(results,5);
 		return Msg.success().add("pageInfo", page);
+	}
+	/**
+	 * 查询客户类型
+	 */
+	@ResponseBody
+	@RequestMapping(value="/consumer/type",method=RequestMethod.GET)
+	public List<Integer> selectConsumerType(){
+		List<Consumer> results = consumerService.selectAll();
+		int linshou = 0;
+		int pifa = 0;
+		for(Consumer consumer : results){
+			if(CommonUtil.isNotEmpty(consumer.getType())){
+				if("批发".equals(consumer.getType()))
+					pifa ++;
+				else 
+					linshou ++;
+			}
+			
+		}
+		List<Integer> type = new ArrayList<>();
+		type.add(pifa);
+		type.add(linshou);
+		return type;
 	}
 	/**
 	 * 添加客户
