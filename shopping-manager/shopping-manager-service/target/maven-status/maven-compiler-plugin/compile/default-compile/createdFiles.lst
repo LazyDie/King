@@ -1,6 +1,14 @@
 com\king\service\CommodityService.class
+com\king\service\impl\GoodServiceImpl.class
+com\king\service\impl\StorageServiceImpl.class
+com\king\service\ConsumerService.class
+com\king\service\impl\CommodityServiceImpl.class
+com\king\service\GoodService.class
+com\king\service\UserService.class
 com\king\service\impl\UserServiceImpl.class
 com\king\service\SupplierService.class
+com\king\service\impl\ConsumerServiceImpl.class
+com\king\service\StorageService.class
 com\king\service\impl\SupplierServiceImpl.class
-com\king\service\impl\CommodityServiceImpl.class
-com\king\service\UserService.class
+com\king\service\SalesService.class
+com\king\service\impl\SalesServiceImpl.class

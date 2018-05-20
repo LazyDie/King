@@ -100,6 +100,16 @@
     <include refid="Base_Column_List" />
     from supplier
   </select>
+  
+    <!-- 根据名称搜索 -->
+  <select id="selectByName" resultType="com.king.pojo.Supplier" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where name like CONCAT('%',#{name},'%')
+  </select>
+
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from supplier
     where id = #{id,jdbcType=INTEGER}

@@ -92,6 +92,14 @@
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/net.sf.jxls/jxls-core -->
+		<dependency>
+		    <groupId>net.sf.jxls</groupId>
+		    <artifactId>jxls-core</artifactId>
+		    <version>1.0.6</version>
+		</dependency>
+        
 	</dependencies>
   
 </project>

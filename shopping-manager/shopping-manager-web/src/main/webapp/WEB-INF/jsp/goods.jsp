@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+ <!--    可选的 Bootstrap 主题文件（一般不用引入） -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -24,7 +24,15 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-            
+   <!--           <link rel="stylesheet" href="bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="bootstrap/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script> -->
             
     <style type="text/css">
 		.input-group span {width:84px; text-align:center; display:inline-block; background:#ffffff;color:#000000;}
@@ -79,7 +87,14 @@
               <div class="input-group">
 		  		<span style="padding:6px 6px">类别</span>
 		  		<div class="layui-input-inline">
-					<input type="text" name="cateId" placeholder="请输入类别" class="layui-input"></input>
+					<!-- <input type="text" name="cateId" placeholder="请输入类别" class="layui-input"></input> -->
+					<select class="form-control" name="type" id="dept_add_select" autocomplete="off">
+						<option value="" selected disabled>请选择货物类型</option>
+						 <option value="食品">食品</option>
+						 <option value="玩具">玩具</option>
+						 <option value="五金">五金</option>
+						 <option value="日用百货">日用百货</option>
+					</select>
 				</div>
 			</div>
 		  </div>
@@ -116,18 +131,37 @@
        
        <div class="row" style="margin-top: 20px;overflow:hidden;">
         <div class="col-md-12">
-          <div class="col-md-12" style="padding:0;">
+          <div class="col-md-4" style="padding:0;">
           		<div class="input-group">
           			<span style="padding:6px 6px">库存</span>
           			<div class="layui-input-inline">
 						<input type="text" name="number" placeholder="请输入库存" class="layui-input"></input>
 					</div>
           		</div>
+          		
+          		<div class="input-group" style="margin-top:20px;">
+          			<span style="padding:6px 6px">货品图片</span>
+          			<div class="layui-input-inline">
+						<button type="button" class="layui-btn" name="file" id="shangchuan1">
+						  <i class="layui-icon">&#xe67c;</i>上传图片
+						</button>     
+					
+						<input type="hidden" id="newsImgUrl" name="path" value="" class="layui-input">
+					</div>
+          		</div>
+          </div>
+          <div class="col-md-4" style="padding:0;">
+          		<div class="input-group">
+          			<span style="padding:6px 6px"></span>
+          			<div class="layui-input-inline">
+						<img id="showUploadImg"  width="100" height="100" style="display: none;" />
+					</div>
+          		</div>
           </div>
           </div>
         </div> 
          
-        <div class="row" style="margin-top:20px;overflow:hidden;">
+<!--         <div class="row" style="margin-top:20px;overflow:hidden;">
         <div class="col-md-12">
           <div class="col-md-12" style="padding:0;">
           		<div class="input-group">
@@ -142,8 +176,8 @@
           		</div>
           </div>
           </div>
-        </div>
-        <div class="row" style="margin-top:20px;overflow:hidden;">
+        </div> -->
+        <!-- <div class="row" style="margin-top:20px;overflow:hidden;">
         <div class="col-md-12">
           <div class="col-md-12" style="padding:0;">
           		<div class="input-group">
@@ -153,15 +187,15 @@
 					</div>
           		</div>
           </div>
-          </div>
+          </div> -->
         </div>
-        
-        
-      </div>
-      <div class="modal-footer">
+        <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary" id="supplier_save_bt">保存</button>
       </div>
+        
+      </div>
+      
       </form>
     </div><!-- /.modal-content -->
     </div>
@@ -273,7 +307,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary" id="supplier_save_bt">保存</button>
+        <button type="button" class="btn btn-primary" id="supplier_up_bt">保存</button>
       </div>
       </form>
     </div><!-- /.modal-content -->
@@ -462,17 +496,17 @@
 	<div class="layui-form-item">
 		<label class="layui-form-label">搜索货品</label>
 		<div class="layui-input-inline">
-			<input type="text" name="search" placeholder="请输入货品名称或条码" class="layui-input"></input>
+			<input type="text" name="search" id="search" placeholder="请输入货品名称" class="layui-input"></input>
 		</div>
 		<div class="layui-input-normal">
-			<button class="layui-btn layui-btn">搜索</button>
+			<button type="button" id="goods_search" class="layui-btn layui-btn">搜索</button>
 			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 		</div>
 		<div class="layui-input-normal layui-layout-right">
 			<!-- <button class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal">新增</button> -->
 			<!-- <button type="button" class="layui-btn layui-btn" data-toggle="modal" data-target="#myModal" id="supplier_add_bt">新增</button> -->
 			<button type="button" class="layui-btn layui-btn" id="supplier_add_bt">添加货品</button>
-			<button type="button" class="layui-btn layui-btn" >出货</button>
+	<!-- 		<button type="button" class="layui-btn layui-btn" >出货</button> -->
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
 		
@@ -649,7 +683,7 @@ layui.use(['form','laypage','upload'], function(){
           
              
             var btnTd = $("<td></td>").append(rukuBtn).append(" ").append(chukuBtn)
-           				 .append(" ").append(editBtn)
+           				/*  .append(" ").append(editBtn) */
            				 .append(" ").append(deleteBtn);
             /*append方法执行完成之后还是原来的元素*/
             $("<tr></tr>").append(empIdTd)
@@ -693,6 +727,7 @@ layui.use(['form','laypage','upload'], function(){
                 to_page(1);
             });
         }
+      
         var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;").attr("href", "#"));
         var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
         if (result.entend.pageInfo.hasNextPage == false) {
@@ -846,7 +881,7 @@ layui.use(['form','laypage','upload'], function(){
   //点击更新按钮，更新货品信息
   $("#supplier_up_bt").click(function(){
 	  $.ajax({
-		  url:"${APP_PATH}/supplier/update/"+$(this).attr("edit-id"),
+		  url:"${APP_PATH}/goods/update/"+$(this).attr("edit-id"),
 		  type:"POST",
 		  data:$("#supplier_Up_Modal form").serialize(),
 		  success:function(result){
@@ -864,11 +899,17 @@ layui.use(['form','laypage','upload'], function(){
 	  	var supplierName = $(this).attr("delete-name");
  		if(confirm("确定删除【"+supplierName+"】吗？")){
  			$.ajax({
- 	 			url:"${APP_PATH}/supplier/delete/"+supplierId,
+ 	 			url:"${APP_PATH}/goods/delete/"+supplierId,
  	 			type:"GET",
  	 			success :function(result){
- 	 				alert(result);
  	 				to_page(1);
+ 	 				layer.msg('删除成功', {
+ 		 				  icon: 1,
+ 		 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+ 		 				}, function(){
+ 		 				  //do something
+ 		 				}); 
+ 	 				
  	 			}
  	 		});	
  		}
@@ -893,7 +934,6 @@ layui.use(['form','laypage','upload'], function(){
   }
   
   //商品入库
-   //修改货品信息，修改按钮
   $(document).on("click",".ruku_bt",function(){
 	 // alert("hello");
 	 //查出货品信息
@@ -937,7 +977,6 @@ layui.use(['form','laypage','upload'], function(){
 	          type: "GET",
 	          success: function (result) {
 	              //将部门信息添加到下拉列表
-
 	              $.each(result.entend.pageInfo.list, function () {
 	                  var optionEle = $("<option></option>").append(this.name).attr("value", this.name);
 	                  optionEle.appendTo("#goods_chuku_select");
@@ -947,7 +986,6 @@ layui.use(['form','laypage','upload'], function(){
  	}
   
  //商品出库
-   //修改货品信息，修改按钮
   $(document).on("click",".chuku_bt",function(){
 	 //查出货品信息
 	 getSupplier($(this).attr("chuku-id"));
@@ -980,6 +1018,105 @@ layui.use(['form','laypage','upload'], function(){
 		  }
 	  });
   });
+  
+   
+ //搜索功能
+   $("#goods_search").click(function(){
+ 	  $.ajax({
+           url: "${APP_PATH}/goods/queryByName",
+           type:"POST",
+  		  data:{
+  			  "name":$("#search").val(),
+  			  "pn":1
+  		  },
+  		  dataType:"json",
+  		  success:function(result){
+  			  build_emp_table(result);
+               build_page_info(result);
+               //解析显示分页条
+               build_page_nav1(result);
+               if(result.entend.pageInfo.total == 0){
+  				  layer.msg('结果为空', {
+  					  icon: 2,
+  					  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+  					}, function(){
+  				
+  					}); 
+  				  return false;
+  			  }
+  			  layer.msg('搜索成功', {
+  				  icon: 1,
+  				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+  				}, function(){
+  			
+  				}); 
+  		  }
+       });
+   });
+   
+   function select_page(pn) {
+       $.ajax({
+           url: "${APP_PATH}/goods/queryByName",
+           type:"POST",
+  		  data:{
+  			  "name":$("#search").val(),
+  			  "pn":pn
+  		  },
+  		  dataType:"json",
+  		  success:function(result){
+  		  }
+       });
+   }
+   
+  //解析显示分页条
+   function build_page_nav1(result) {
+ 	  $("#page_nav").empty();
+       var ul = $("<ul></ul>").addClass("pagination");
+       var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
+       var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;").attr("href", "#"));
+       if (result.entend.pageInfo.hasPreviousPage == false) {
+           prePageLi.addClass("disabled");
+           firstPageLi.addClass("disabled");
+       } else {
+           prePageLi.click(function () {
+               to_page(result.entend.pageInfo.pageNum - 1);
+           });
+           firstPageLi.click(function () {
+               to_page(1);
+           });
+       }
+       var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;").attr("href", "#"));
+       var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
+       if (result.entend.pageInfo.hasNextPage == false) {
+           nextPageLi.addClass("disabled");
+           lastPageLi.addClass("disabled");
+       } else {
+           nextPageLi.click(function () {
+               to_page(result.entend.pageInfo.pageNum + 1);
+           });
+           lastPageLi.click(function () {
+               to_page(result.entend.pageInfo.pages);
+           });
+       }
+       //添加首页和前一页
+       ul.append(firstPageLi).append(prePageLi);
+       $.each(result.entend.pageInfo.navigatepageNums, function (index, item) {
+           var numLi = $("<li></li>").append($("<a></a>").append(item).attr("href", "#"));
+           if (result.entend.pageInfo.pageNum == item) {
+               numLi.addClass("active");
+           }
+           numLi.click(function () {
+               to_page(item);
+           });
+           //添加页码号
+           ul.append(numLi);
+       });
+       //添加下一页和末页
+       ul.append(nextPageLi).append(lastPageLi);
+       var nav = $("<nav></nav>").append(ul);
+       $("#page_nav").append(nav);
+   }
+   
   
 </script>          
 </body>

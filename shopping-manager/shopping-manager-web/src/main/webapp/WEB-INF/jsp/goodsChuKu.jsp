@@ -34,18 +34,15 @@
 
 <!-- 表格主体 -->
 
-<!-- <form class="layui-form" action="supplierSelectAll" method="get">
+
+<form class="layui-form" action="supplierSelectAll" method="get">
 	<div class="layui-form-item">
-		<label class="layui-form-label">搜索货品</label>
 		<div class="layui-input-inline">
-			<input type="text" name="search" placeholder="请输入货品名称或条码" class="layui-input"></input>
+			<button type="button" class="layui-btn layui-btn" id="supplier_add_bt">导出记录</button>
 		</div>
-		<div class="layui-input-normal">
-			<button class="layui-btn layui-btn">搜索</button>
-			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-		</div>
+		
 	</div>
-</form> -->
+</form>
 
    <div class="layui-form ">
                <table class="layui-table" id="commparaTable" cyType="pageGrid"
@@ -238,7 +235,41 @@ layui.use(['form','laypage','upload'], function(){
         $("#page_nav").append(nav);
     }
     
-
+	  //删除销售记录
+	    $(document).on("click",".delete_bt",function(){
+	  	  
+	  		var supplierId = $(this).attr("delete-id");
+	  	  	var supplierName = $(this).attr("delete-name");
+	   		if(confirm("确定删除编号为【"+supplierId+"】的数据吗？")){
+	   			$.ajax({
+	   	 			url:"${APP_PATH}/goodChuKu/delete/"+supplierId,
+	   	 			type:"GET",
+	   	 			success :function(result){
+	   	 				to_page(1);
+	   	 				layer.msg('删除成功', {
+	   	 				  icon: 1,
+	   	 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+	   	 				}, function(){
+	   	 				  //do something
+	   	 				});  
+	   	 			}
+	   	 		});	
+	   		}
+	  	  	
+	    });
+    
+    
+    //点击导出按钮
+    $("#supplier_add_bt").click(function () {
+    	 $.ajax({
+             url: "${APP_PATH}/sale/export",
+             type: "POST",
+             success: function (result) {
+       
+             }
+         });
+       
+    });
 </script>          
 </body>
 

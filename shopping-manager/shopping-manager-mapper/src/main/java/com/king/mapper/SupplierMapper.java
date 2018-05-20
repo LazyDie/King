@@ -29,4 +29,6 @@ public interface SupplierMapper {
     int updateByPrimaryKey(Supplier record);
     
     List<Supplier> selectAll();
+    
+    List<Supplier> selectByName(String name);
 }

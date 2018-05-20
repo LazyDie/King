@@ -21,4 +21,9 @@ public interface StorageService {
 	 * 查询每种商品的销量
 	 */
 	List<Storage> selectXiaoLiang();
+	
+	/**
+	 * 删除记录
+	 */
+	int deleteByPrimaryKey(int id);
 }

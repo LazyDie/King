@@ -1,6 +1,7 @@
 package com.king.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.king.common.pojo.Msg;
+import com.king.common.utils.CommonUtil;
 import com.king.common.utils.FileUpdate;
+import com.king.pojo.Consumer;
 import com.king.pojo.Goods;
 import com.king.service.GoodService;
 
@@ -103,4 +106,58 @@ public class GoodController {
 			return Msg.fail();
 		}
 	}
+	/**
+	 * 删除
+	 * @param pn
+	 * @param name
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/goods/delete/{id}",method=RequestMethod.GET)
+	public String supplierDelete(@PathVariable("id") int id){
+		int result = goodService.deleteByPrimaryKey(id);
+		if(result!=0){
+			return "success";
+		}else {
+			return "false";
+		}
+	}
+	/**
+	 * 修改
+	 * @param pn
+	 * @param name
+	 * @return
+	 */
+	
+	@ResponseBody
+	@RequestMapping(value="/goods/update/{id}",method=RequestMethod.POST)
+	public String supplierUpdate(Goods goods){
+		int result = goodService.updateGoods(goods);
+		System.out.println(result);
+		if(result!=0){
+			return "success";
+		}else {
+			return "false";
+		}
+	}
+	
+	
+	/*
+	 * 搜索
+	 * */
+	
+	@ResponseBody
+	@RequestMapping(value="/goods/queryByName",method=RequestMethod.POST)
+	public Msg consumerQueryName(@RequestParam(value="pn",defaultValue="1")Integer pn,
+								@RequestParam("name") String name){
+		PageHelper.startPage(pn, 5);
+		List<Goods> result = new ArrayList<>();
+		if(CommonUtil.isEmpty(name))
+			result = goodService.selectAll();
+		else
+			result = goodService.selectByName(name);
+		PageInfo<Goods> page = new PageInfo<>(result, 5);
+		return Msg.success().add("pageInfo", page);
+	}
+		
 }

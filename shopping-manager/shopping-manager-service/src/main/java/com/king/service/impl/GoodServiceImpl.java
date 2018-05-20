@@ -37,7 +37,19 @@ public class GoodServiceImpl implements GoodService{
 		return goodsMapper.updateByPrimaryKey(goods);
 	}
 
+	@Override
+	public List<Goods> selectByName(String name) {
+		// TODO Auto-generated method stub
+		return goodsMapper.selectByName(name);
+	}
 
+	@Override
+	public int deleteByPrimaryKey(Integer id) {
+		// TODO Auto-generated method stub
+		return goodsMapper.deleteByPrimaryKey(id);
+	}
+
+	
 	
 	
 }

@@ -11,36 +11,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class CommonUtil {
-	public final static String DEFAULT_PASSWORD = "123456";// 默认登录密码
 
-	// private final static String pattern = "\\A";
 	private CommonUtil() {
 	}
 
-	/**
-	 * 32位唯一字符串（十六进制字符）
-	 * 
-	 * @return
-	 */
-	/*public static String genNonceStr() {
-		Random random = new Random();
-		return MD5.getMessageDigest(String.valueOf(random.nextInt(10000)).getBytes());
-	}*/
-
-	/**
-	 * 获取IP
-	 * 
-	 * @return
-	 */
-	public static String getCurrentIp() {
-		InetAddress addr = null;
-		try {
-			addr = InetAddress.getLocalHost();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		return isEmpty(addr) ? "0.0.0.0" : addr.getHostAddress().toString();
-	}
 
 	/**
 	 * 判断空值
@@ -76,28 +50,6 @@ public class CommonUtil {
 		return !isEmpty(obj);
 	}
 
-	/**
-	 * 流转字符串
-	 * 
-	 * @param content
-	 * @return
-	 */
-	/*public static String getStringFromInputStream(InputStream content, String charSet) {
-		if (CommonUtil.isEmpty(content))
-			return null;
-		Scanner scanner = new Scanner(content, CommonUtil.isEmpty(charSet) ? Constants.DEFAULT_ENCODING : charSet);
-		StringBuilder sb = new StringBuilder();
-		while (scanner.hasNext()) {
-			sb.append(scanner.next());
-		}
-		scanner.close();
-		try {
-			content.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return sb.toString();
-	}*/
 
 	/**
 	 * 产生一个6位随机验证码
@@ -124,45 +76,6 @@ public class CommonUtil {
 	}
 
 	/**
-	 * 是否启用nosql
-	 * 
-	 * @return
-	 *//*
-	public static boolean nosqlOn() {
-		return "on".equals(Constants.NOSQL_SWITCH);
-	}*/
-
-	/**
-	 * 是否启用cache
-	 * 
-	 * @return
-	 */
-	/*public static boolean cacheOn() {
-		return "on".equals(Constants.CACHE_SWITCH);
-	}*/
-
-	/**
-	 * 是否启用DAO日志
-	 * 
-	 * @return
-	 */
-	/*public static boolean daoLogOn() {
-		return "on".equals(Constants.CACHE_SWITCH);
-	}*/
-
-	/**
-	 * 8位随机字符串
-	 * 
-	 * @return
-	 */
-	/*public static String generateShortUuid() {
-		String uuid = UUID.randomUUID().toString().replace("-", "");
-		Random r = new Random();
-		int nextInt = r.nextInt(7);
-		return uuid.substring(nextInt, nextInt + 8);
-	}
-*/
-	/**
 	 * 8位随机数字
 	 * 
 	 * @return
@@ -179,8 +92,5 @@ public class CommonUtil {
 		}
 		return str.toString();
 	}
-/*
-	public static void main(String[] args) {
-		System.out.println(genNonceStr());
-	}*/
+
 }

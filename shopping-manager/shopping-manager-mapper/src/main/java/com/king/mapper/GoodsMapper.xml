@@ -7,7 +7,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="path" property="path" jdbcType="VARCHAR" />
     <result column="barCode" property="barcode" jdbcType="VARCHAR" />
-    <result column="cate_id" property="cateId" jdbcType="INTEGER" />
+    <result column="cate_id" property="cateId" jdbcType="VARCHAR" />
     <result column="number" property="number" jdbcType="INTEGER" />
     <result column="cPirce" property="cpirce" jdbcType="DOUBLE" />
     <result column="pPirce" property="ppirce" jdbcType="DOUBLE" />
@@ -102,6 +102,12 @@
     <include refid="Base_Column_List" />
     from goods
    </select>
+   
+      <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods where name like CONCAT('%',#{name,jdbcType=VARCHAR},'%')
+   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from goods
     where id = #{id,jdbcType=INTEGER}
@@ -118,7 +124,7 @@
       number, cPirce, pPirce, 
       rPrice, mId, status)
     values (#{id,jdbcType=INTEGER}, #{gid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{path,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, #{cateId,jdbcType=INTEGER}, 
+      #{path,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, #{cateId,jdbcType=VARCHAR}, 
       #{number,jdbcType=INTEGER}, #{cpirce,jdbcType=DOUBLE}, #{ppirce,jdbcType=DOUBLE}, 
       #{rprice,jdbcType=DOUBLE}, #{mid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
@@ -179,7 +185,7 @@
         #{barcode,jdbcType=VARCHAR},
       </if>
       <if test="cateId != null" >
-        #{cateId,jdbcType=INTEGER},
+        #{cateId,jdbcType=VARCHAR},
       </if>
       <if test="number != null" >
         #{number,jdbcType=INTEGER},
@@ -226,7 +232,7 @@
         barCode = #{record.barcode,jdbcType=VARCHAR},
       </if>
       <if test="record.cateId != null" >
-        cate_id = #{record.cateId,jdbcType=INTEGER},
+        cate_id = #{record.cateId,jdbcType=VARCHAR},
       </if>
       <if test="record.number != null" >
         number = #{record.number,jdbcType=INTEGER},
@@ -258,7 +264,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       path = #{record.path,jdbcType=VARCHAR},
       barCode = #{record.barcode,jdbcType=VARCHAR},
-      cate_id = #{record.cateId,jdbcType=INTEGER},
+      cate_id = #{record.cateId,jdbcType=VARCHAR},
       number = #{record.number,jdbcType=INTEGER},
       cPirce = #{record.cpirce,jdbcType=DOUBLE},
       pPirce = #{record.ppirce,jdbcType=DOUBLE},
@@ -285,7 +291,7 @@
         barCode = #{barcode,jdbcType=VARCHAR},
       </if>
       <if test="cateId != null" >
-        cate_id = #{cateId,jdbcType=INTEGER},
+        cate_id = #{cateId,jdbcType=VARCHAR},
       </if>
       <if test="number != null" >
         number = #{number,jdbcType=INTEGER},
@@ -314,7 +320,7 @@
       name = #{name,jdbcType=VARCHAR},
       path = #{path,jdbcType=VARCHAR},
       barCode = #{barcode,jdbcType=VARCHAR},
-      cate_id = #{cateId,jdbcType=INTEGER},
+      cate_id = #{cateId,jdbcType=VARCHAR},
       number = #{number,jdbcType=INTEGER},
       cPirce = #{cpirce,jdbcType=DOUBLE},
       pPirce = #{ppirce,jdbcType=DOUBLE},

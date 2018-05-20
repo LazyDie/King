@@ -17,6 +17,7 @@ import com.king.common.pojo.Msg;
 import com.king.common.utils.CommonUtil;
 import com.king.pojo.Consumer;
 import com.king.pojo.Goods;
+import com.king.pojo.Supplier;
 import com.king.service.ConsumerService;
 
 @Controller
@@ -117,5 +118,32 @@ public class ConsumerController {
 		}else{
 			return Msg.fail();
 		}
+	}
+	//查询功能
+	/*@ResponseBody
+	@RequestMapping(value="/consumer/queryByName",method=RequestMethod.POST)
+	public PageInfo<?> queryByName(@RequestParam(value="pn",defaultValue="1")Integer pn,
+									@RequestParam("name") String name){
+			PageHelper.startPage(pn, 5);
+			List<Consumer> result = new ArrayList<>();
+			if(CommonUtil.isEmpty(name))
+				result = consumerService.selectAll();
+			else
+				result = consumerService.SelectByName(name);
+			PageInfo<Consumer> page = new PageInfo<>(result, 5);
+			return page;
+	}*/
+	@ResponseBody
+	@RequestMapping(value="/consumer/queryByName",method=RequestMethod.POST)
+	public Msg consumerQueryName(@RequestParam(value="pn",defaultValue="1")Integer pn,
+								@RequestParam("name") String name){
+		PageHelper.startPage(pn, 5);
+		List<Consumer> result = new ArrayList<>();
+		if(CommonUtil.isEmpty(name))
+			result = consumerService.selectAll();
+		else
+			result = consumerService.SelectByName(name);
+		PageInfo<Consumer> page = new PageInfo<>(result, 5);
+		return Msg.success().add("pageInfo", page);
 	}
 }

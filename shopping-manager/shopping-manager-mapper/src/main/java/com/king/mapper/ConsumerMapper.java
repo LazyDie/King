@@ -29,4 +29,6 @@ public interface ConsumerMapper {
     int updateByPrimaryKey(Consumer record);
     
     List<Consumer> selectAll();
+    
+    List<Consumer> selectByName(String name);
 }

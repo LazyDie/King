@@ -11,7 +11,7 @@ public class Goods {
 
     private String barcode;
 
-    private Integer cateId;
+    private String cateId;
 
     private Integer number;
 
@@ -65,15 +65,16 @@ public class Goods {
         this.barcode = barcode == null ? null : barcode.trim();
     }
 
-    public Integer getCateId() {
-        return cateId;
-    }
 
-    public void setCateId(Integer cateId) {
-        this.cateId = cateId;
-    }
+    public String getCateId() {
+		return cateId;
+	}
 
-    public Integer getNumber() {
+	public void setCateId(String cateId) {
+		this.cateId = cateId;
+	}
+
+	public Integer getNumber() {
         return number;
     }
 

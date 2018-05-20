@@ -1,3 +1,7 @@
+com\king\mapper\ConsumerMapper.class
 com\king\mapper\UserMapper.class
 com\king\mapper\SupplierMapper.class
+com\king\mapper\GoodsMapper.class
+com\king\mapper\SalesMapper.class
 com\king\mapper\CommodityMapper.class
+com\king\mapper\StorageMapper.class

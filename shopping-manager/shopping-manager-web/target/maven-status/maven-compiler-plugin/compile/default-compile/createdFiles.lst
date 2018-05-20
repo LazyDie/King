@@ -1,5 +1,12 @@
+com\king\vo\StrogeVo.class
+com\king\controller\XLSTransformerExport.class
+com\king\vo\SalesVo.class
+com\king\controller\AdminController.class
+com\king\controller\PageController.class
+com\king\controller\SalesController.class
+com\king\controller\StorageController.class
+com\king\controller\GoodController.class
+com\king\controller\ConsumerController.class
 com\king\controller\SupplierController.class
 com\king\controller\FileController.class
-com\king\controller\UserController.class
-com\king\controller\PageController.class
 com\king\controller\CommodityController.class

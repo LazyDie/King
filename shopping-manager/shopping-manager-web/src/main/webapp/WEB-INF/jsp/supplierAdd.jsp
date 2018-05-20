@@ -248,12 +248,12 @@
 
 <form class="layui-form" action="supplierSelectAll" method="get">
 	<div class="layui-form-item">
-		<label class="layui-form-label">批发商搜索：</label>
+		<label class="layui-form-label">供应商搜索：</label>
 		<div class="layui-input-inline">
-			<input type="text" name="search" placeholder="请输入运营商id或名称" class="layui-input"></input>
+			<input type="text" name="search" id="search" placeholder="请输入供应商名称" class="layui-input"></input>
 		</div>
 		<div class="layui-input-normal">
-			<button class="layui-btn layui-btn">搜索</button>
+			<button type="button" class="layui-btn layui-btn" id="supplier_query">搜索</button>
 			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 		</div>
 		<div class="layui-input-normal layui-layout-right">
@@ -387,7 +387,7 @@ var Render = {
 /* ajax请求 */
  //页面加载完成后，直接去发送一个ajax请求，要到分页数据
     $(function () {
-        to_page(1);
+         to_page(1); 
     });
     //根据页码显示页面
     function to_page(pn) {
@@ -654,7 +654,134 @@ var Render = {
  		}
 	  	
   });
+
+/*  $("#supplier_query1").click(function(){
+	  $.ajax({
+		  url:"${APP_PATH}/supplier/queryByName",
+		  type:"POST",
+		  data:{
+			  "name":$("#search").val()
+		  },
+		  dataType:"json",
+		  success:function(result){
+			  build_emp_table(result);
+              build_page_info(result);
+              //解析显示分页条
+              build_page_nav(result);
+			  layer.msg('搜索成功', {
+ 				  icon: 1,
+ 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+ 				}, function(){
+ 			
+ 				}); 
+          
+		  }
+	  });
+  }); */
+//搜索功能
+ $("#supplier_query").click(function(){
+	 $.ajax({
+         url: "${APP_PATH}/supplier/queryByName",
+         type:"POST",
+		  data:{
+			  "name":$("#search").val(),
+			  "pn":1
+		  },
+		  dataType:"json",
+		  success:function(result){
+			  
+			  
+			  build_emp_table(result);
+             build_page_info(result);
+             //解析显示分页条
+             build_page_nav1(result);
+             if(result.total == 0){
+				  layer.msg('结果为空', {
+					  icon: 2,
+					  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+					}, function(){
+				
+					}); 
+				  return false;
+			  }
+			  layer.msg('搜索成功', {
+				  icon: 1,
+				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				}, function(){
+			
+				}); 
+		  }
+     });
+ });
+ 
+ function select_page(pn) {
+     $.ajax({
+         url: "${APP_PATH}/supplier/queryByName",
+         type:"POST",
+		  data:{
+			  "name":$("#search").val(),
+			  "pn":pn
+		  },
+		  dataType:"json",
+		  success:function(result){
+			 build_emp_table(result);
+             build_page_info(result);
+             build_page_nav1(result);
+		  }
+     });
+ }
+ 
+//解析显示分页条
+ function build_page_nav1(result) {
+     $("#page_nav").empty();
+     var ul = $("<ul></ul>").addClass("pagination");
+     var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
+     var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;").attr("href", "#"));
+     if (result.hasPreviousPage == false) {
+         prePageLi.addClass("disabled");
+         firstPageLi.addClass("disabled");
+     } else {
+         prePageLi.click(function () {
+        	 select_page(result.pageNum - 1);
+         });
+         firstPageLi.click(function () {
+        	 select_page(1);
+         });
+     }
+     var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;").attr("href", "#"));
+     var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
+     if (result.hasNextPage == false) {
+         nextPageLi.addClass("disabled");
+         lastPageLi.addClass("disabled");
+     } else {
+         nextPageLi.click(function () {
+        	 select_page(result.pageNum + 1);
+         });
+         lastPageLi.click(function () {
+        	 select_page(result.pages);
+         });
+     }
+     //添加首页和前一页
+     ul.append(firstPageLi).append(prePageLi);
+     $.each(result.navigatepageNums, function (index, item) {
+         var numLi = $("<li></li>").append($("<a></a>").append(item).attr("href", "#"));
+         if (result.pageNum == item) {
+             numLi.addClass("active");
+         }
+         numLi.click(function () {
+        	 select_page(item);
+         });
+         //添加页码号
+         ul.append(numLi);
+     });
+     //添加下一页和末页
+     ul.append(nextPageLi).append(lastPageLi);
+     var nav = $("<nav></nav>").append(ul);
+     $("#page_nav").append(nav);
+ }
+ 
 </script>          
 </body>
+
 
 </html>

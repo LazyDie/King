@@ -11,4 +11,6 @@ public interface SalesService {
 	Integer addSales(Sales sales);
 	
 	List<Sales> selectXiaoLiang();
+	
+	int deleteByPrimaryKey(int id);
 }

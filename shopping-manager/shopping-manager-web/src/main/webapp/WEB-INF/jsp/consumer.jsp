@@ -190,10 +190,10 @@
 	<div class="layui-form-item">
 		<label class="layui-form-label">搜索客户</label>
 		<div class="layui-input-inline">
-			<input type="text" name="search" placeholder="请输入客户名称或条码" class="layui-input"></input>
+			<input type="text" name="search" id="search" placeholder="请输入联系人名称" class="layui-input"></input>
 		</div>
 		<div class="layui-input-normal">
-			<button class="layui-btn layui-btn">搜索</button>
+			<button type="button" class="layui-btn layui-btn" id="consumer_query">搜索</button>
 			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 		</div>
 		<div class="layui-input-normal layui-layout-right">
@@ -560,6 +560,107 @@ layui.use(['form','laypage','upload'], function(){
  		}
 	  	
   });
+  
+
+  
+//搜索功能
+  $("#consumer_query").click(function(){
+	  $.ajax({
+          url: "${APP_PATH}/consumer/queryByName",
+          type:"POST",
+ 		  data:{
+ 			  "name":$("#search").val(),
+ 			  "pn":1
+ 		  },
+ 		  dataType:"json",
+ 		  success:function(result){
+ 			  build_emp_table(result);
+              build_page_info(result);
+              //解析显示分页条
+              build_page_nav1(result);
+              if(result.entend.pageInfo.total == 0){
+ 				  layer.msg('结果为空', {
+ 					  icon: 2,
+ 					  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+ 					}, function(){
+ 				
+ 					}); 
+ 				  return false;
+ 			  }
+ 			  layer.msg('搜索成功', {
+ 				  icon: 1,
+ 				  time: 2000 //2秒关闭（如果不配置，默认是3秒）
+ 				}, function(){
+ 			
+ 				}); 
+ 		  }
+      });
+  });
+  
+  function select_page(pn) {
+      $.ajax({
+          url: "${APP_PATH}/consumer/queryByName",
+          type:"POST",
+ 		  data:{
+ 			  "name":$("#search").val(),
+ 			  "pn":pn
+ 		  },
+ 		  dataType:"json",
+ 		  success:function(result){
+ 		  }
+      });
+  }
+  
+ //解析显示分页条
+  function build_page_nav1(result) {
+	  $("#page_nav").empty();
+      var ul = $("<ul></ul>").addClass("pagination");
+      var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href", "#"));
+      var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;").attr("href", "#"));
+      if (result.entend.pageInfo.hasPreviousPage == false) {
+          prePageLi.addClass("disabled");
+          firstPageLi.addClass("disabled");
+      } else {
+          prePageLi.click(function () {
+              to_page(result.entend.pageInfo.pageNum - 1);
+          });
+          firstPageLi.click(function () {
+              to_page(1);
+          });
+      }
+      var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;").attr("href", "#"));
+      var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href", "#"));
+      if (result.entend.pageInfo.hasNextPage == false) {
+          nextPageLi.addClass("disabled");
+          lastPageLi.addClass("disabled");
+      } else {
+          nextPageLi.click(function () {
+              to_page(result.entend.pageInfo.pageNum + 1);
+          });
+          lastPageLi.click(function () {
+              to_page(result.entend.pageInfo.pages);
+          });
+      }
+      //添加首页和前一页
+      ul.append(firstPageLi).append(prePageLi);
+      $.each(result.entend.pageInfo.navigatepageNums, function (index, item) {
+          var numLi = $("<li></li>").append($("<a></a>").append(item).attr("href", "#"));
+          if (result.entend.pageInfo.pageNum == item) {
+              numLi.addClass("active");
+          }
+          numLi.click(function () {
+              to_page(item);
+          });
+          //添加页码号
+          ul.append(numLi);
+      });
+      //添加下一页和末页
+      ul.append(nextPageLi).append(lastPageLi);
+      var nav = $("<nav></nav>").append(ul);
+      $("#page_nav").append(nav);
+  }
+  
+  
 </script>          
 </body>
 

@@ -123,4 +123,14 @@ public class AdminController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/basicInfo/xiugai",method=RequestMethod.POST)
+	public ModelAndView xiuGai(HttpServletRequest req){
+		int id = (int) req.getSession().getAttribute("id");
+		User user = userService.selectById(id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("basicInfoEdit");
+		mv.addObject("user",user);
+		return mv;
+	}
+	
 }

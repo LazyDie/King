@@ -29,7 +29,11 @@ public class StorageServiceImpl implements StorageService{
 		// TODO Auto-generated method stub
 		return storageMapper.selectXiaoLiang();
 	}
+	@Override
+	public int deleteByPrimaryKey(int id) {
+		// TODO Auto-generated method stub
+		return storageMapper.deleteByPrimaryKey(id);
+	}
 
-	
 	
 }

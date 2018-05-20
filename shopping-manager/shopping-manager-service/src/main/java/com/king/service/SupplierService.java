@@ -30,4 +30,9 @@ public interface SupplierService {
 	 * @return
 	 */
 	int deleteByPrimaryKey(Integer id);
+	
+	/**
+	 * 根据名称查询
+	 */
+	List<Supplier> SelectByName(String name);
 }

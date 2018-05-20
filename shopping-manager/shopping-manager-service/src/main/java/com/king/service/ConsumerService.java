@@ -28,4 +28,6 @@ public interface ConsumerService {
 	 * 删除用户信息
 	 */
 	Integer deleteById(Integer id);
+	
+	List<Consumer> SelectByName(String name);
 }

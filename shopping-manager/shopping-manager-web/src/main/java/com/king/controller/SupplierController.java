@@ -1,5 +1,6 @@
 package com.king.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.king.common.pojo.Msg;
+import com.king.common.utils.CommonUtil;
 import com.king.pojo.Supplier;
 import com.king.service.SupplierService;
 
@@ -96,6 +99,28 @@ public class SupplierController {
 			return "false";
 		}
 	}
-	
+	//搜索功能
+	@ResponseBody
+	@RequestMapping(value="/supplier/queryByName",method=RequestMethod.POST)
+	public PageInfo<?> queryByName(@RequestParam(value="pn",defaultValue="1")Integer pn,
+									@RequestParam("name") String name){
+			PageHelper.startPage(pn, 5);
+			List<Supplier> result = new ArrayList<>();
+			if(CommonUtil.isEmpty(name))
+				result = supplierService.selectAll();
+			else
+				result = supplierService.SelectByName(name);
+			PageInfo<Supplier> page = new PageInfo<>(result, 5);
+			return page;
+	}
+
+	/*@ResponseBody
+	@RequestMapping(value="/supplier/queryByName",method=RequestMethod.POST)
+	public List<Supplier> queryByName(@RequestParam("name") String name){
+		System.out.println("搜索=========");
+		System.out.println(name);
+		List<Supplier> lists = supplierService.SelectByName(name);
+		return lists;
+	}*/
 	
 }

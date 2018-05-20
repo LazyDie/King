@@ -23,4 +23,14 @@ public interface GoodService {
 	 * 更新商品信息
 	 */
 	Integer updateGoods(Goods goods);
+	
+	/**
+	 * 搜索
+	 */
+	List<Goods> selectByName(String name);
+	
+	/**
+	 * 删除
+	 */
+	int deleteByPrimaryKey(Integer id);
 }

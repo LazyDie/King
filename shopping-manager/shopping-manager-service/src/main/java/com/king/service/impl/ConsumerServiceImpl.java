@@ -44,6 +44,12 @@ public class ConsumerServiceImpl implements ConsumerService{
 		// TODO Auto-generated method stub
 		return consumerMapper.deleteByPrimaryKey(id);
 	}
+
+	@Override
+	public List<Consumer> SelectByName(String name) {
+		// TODO Auto-generated method stub
+		return consumerMapper.selectByName(name);
+	}
 	
 	
 	

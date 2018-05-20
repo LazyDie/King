@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="layui-body">
-<form class="layui-form" action="zhuce" method="post" enctype="multipart/form-data">
+<form class="layui-form" action="xiugai" method="post" enctype="multipart/form-data">
   
    <div class="row" style="margin-top: 20px;overflow:hidden;">
          <div class="col-md-12" >

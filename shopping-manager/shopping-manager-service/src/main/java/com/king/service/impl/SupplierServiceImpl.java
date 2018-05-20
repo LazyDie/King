@@ -47,7 +47,10 @@ public class SupplierServiceImpl implements SupplierService{
 		return supplierMapper.deleteByPrimaryKey(id);
 	}
 
-	
-	
+	@Override
+	public List<Supplier> SelectByName(String name) {
+		// TODO Auto-generated method stub
+		return supplierMapper.selectByName(name);
+	}
 	
 }
